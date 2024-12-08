@@ -1,0 +1,26 @@
+li {
+  list-style: none;
+}
+
+.footer_copyright {
+  background-color: #c40233;
+  color: rgba(245, 245, 245, 0.97);
+  a {
+    text-decoration: none;
+    color: rgba(245, 245, 245, 0.97);
+  }
+}
+
+.footer_redes {
+  .icons {
+    a {
+      font-size: 1.3rem;
+      color: #000;
+      transition: 0.3s;
+    }
+  }
+}
+.footer_redes .icons a:hover {
+  color: #c40233;
+  transform: scale(0.5);
+}
