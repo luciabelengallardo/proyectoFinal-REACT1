@@ -1,15 +1,17 @@
 import React from "react";
+import { Link, NavLink } from "react-router-dom";
+import logo from "../img/logomovienight.png";
 
 function NavBar() {
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <nav className="navbar navbar-expand-lg bg-navbar">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
-            REACT 1
-          </a>
+          <Link className="navbar-brand" to="/">
+            <img src={logo} alt="logo-movie-night" />
+          </Link>
           <button
-            className="navbar-toggler"
+            className="navbar-toggler bg-secondary "
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarNav"
@@ -20,16 +22,26 @@ function NavBar() {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav">
+            <ul className="navbar-nav d-flex align-items-center">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">
+                <Link
+                  className="nav-link active text-white"
+                  aria-current="page"
+                  to="/"
+                >
                   Inicio
-                </a>
+                </Link>
               </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Contacto
-                </a>
+              {/* <li className="nav-item">
+                <Link className="nav-link text-white" to="/AboutUs">
+                  Nosotros
+                </Link>
+              </li> */}
+
+              <li className="nav-item btn btn-outline-secondary btn-iniciar-sesion">
+                <Link className="nav-link text-white" to="/login">
+                  Iniciar Sesion
+                </Link>
               </li>
             </ul>
           </div>
