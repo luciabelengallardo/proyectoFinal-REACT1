@@ -44,9 +44,6 @@ a {
   align-items: center;
 }
 
-/* @media screen and (min-width: 1024px) {
-    .btn-iniciar-sesion {
-      display: flex;
-      justify-content: end;
-    }
-  } */
+.footer-link {
+  text-decoration: none;
+}
