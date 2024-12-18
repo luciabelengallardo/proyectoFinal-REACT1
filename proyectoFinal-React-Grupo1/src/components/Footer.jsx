@@ -1,12 +1,18 @@
 import React from "react";
 import "../css/footer.css";
+import { Link } from "react-router-dom";
+import logo from "../img/logomovienight.png";
 
 function Footer() {
   return (
     <footer>
       <div className="footer_contenedor d-flex flex-column align-items-stretch">
         <div className="row d-flex justify-content-between">
-          <div className="col-sm-12 col-md-4">REACT 1</div>
+          <div className="col-sm-12 col-md-4">
+            <Link className="" to="/">
+              <img src={logo} alt="logo-movie-night" />
+            </Link>
+          </div>
           <div className="col-sm-12 col-md-4 d-flex flex-column align-items-center">
             <h5>Soporte</h5>
             <ul className="d-flex justify-content-center flex-md-column">
