@@ -8,7 +8,7 @@ function Footer() {
     <footer>
       <div className="footer_contenedor d-flex flex-column align-items-stretch">
         <div className="row d-flex justify-content-between">
-          <div className="col-sm-12 col-md-4">
+          <div className="col-sm-12 col-md-4 ">
             <Link className="navbar-brand" to="/">
               <img src={logo} alt="logo-movie-night" />
             </Link>
