@@ -11,7 +11,7 @@ function HomeScreen() {
   
   return (
     <>
-    <div >
+    <div className="carouselDestacadas" >
       <h3>Peliculas</h3>
       <div id="movieCarousel" className="carousel slide" data-bs-ride="carousel">
         <div className="carousel-inner">
