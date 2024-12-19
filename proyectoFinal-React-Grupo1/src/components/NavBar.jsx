@@ -32,11 +32,11 @@ function NavBar() {
                   Inicio
                 </Link>
               </li>
-              {/* <li className="nav-item">
-                <Link className="nav-link text-white" to="/AboutUs">
-                  Nosotros
+              <li className="nav-item">
+                <Link className="nav-link text-white" to="/Movies">
+                  Peliculas
                 </Link>
-              </li> */}
+              </li>
 
               <li className="nav-item btn btn-outline-secondary btn-iniciar-sesion">
                 <Link className="nav-link text-white" to="/login">
