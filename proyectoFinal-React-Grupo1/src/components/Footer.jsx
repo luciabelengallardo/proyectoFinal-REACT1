@@ -32,7 +32,7 @@ function Footer() {
           {/* <!-- Redes --> */}
           <div className="col-sm-12 col-md-4 d-flex flex-column align-items-center footer_redes">
             <div className="icons">
-              <Link className="text-white" to="/facebook">
+              <Link className="text-white link-redes" to="/facebook">
                 <i className="bi bi-facebook p-1"></i>
               </Link>
               <Link className="text-white" to="/instagram">

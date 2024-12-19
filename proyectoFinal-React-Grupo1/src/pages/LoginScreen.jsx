@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../css/login.css";
 
 function LoginScreen() {
   const navigate = useNavigate();
@@ -46,47 +47,44 @@ function LoginScreen() {
 
   return (
     <>
-      <div className="container text-white">
-        <div className="row">
-          <div className="col text-center">
-            <h2></h2>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col col-md-6 offset-md-3">
-            <form onSubmit={handleSubmit}>
-              <div className="mb-3 d-grid">
-                <label>Email</label>
-                <input
-                  type="email"
-                  className="form-control"
-                  name="email"
-                  // required
-                  //   onChange={(e) => {
-                  //     setEmail(e.target.value);
-                  //   }}
-                  value={formValues.email}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="mb-3 d-grid">
-                <label>Password</label>
-                <input
-                  type="password"
-                  className="form-control"
-                  name="password"
-                  //   onChange={(e) => {
-                  //     setPassword(e.target.value);
-                  //   }}
-                  value={formValues.password}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="mb-3 d-grid">
-                <button className="btn btn-secondary">Iniciar Sesion</button>
-              </div>
-            </form>
-          </div>
+      <div className="login-container container d-flex justify-content-center align-items-center">
+        <div className="login-form bg-light p-4 rounded shadow">
+          <h2 className="text-center text-black mb-4">Iniciar Sesión</h2>
+          <form onSubmit={handleSubmit}>
+            <div className="mb-3">
+              <label htmlFor="email" className="form-label text-black">
+                Email
+              </label>
+              <input
+                type="email"
+                className="form-control"
+                id="email"
+                name="email"
+                placeholder="ejemplo@gmail.com"
+                value={formValues.email}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="password" className="form-label text-black">
+                Contraseña
+              </label>
+              <input
+                type="password"
+                className="form-control"
+                id="password"
+                name="password"
+                placeholder="********"
+                value={formValues.password}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="mb-3">
+              <button type="submit" className="btn btn-secondary w-100">
+                Iniciar Sesión
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </>
