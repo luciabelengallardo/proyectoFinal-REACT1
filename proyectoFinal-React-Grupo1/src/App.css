@@ -41,23 +41,3 @@
   color: #888;
 }
 
-.poster{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-}
-
-.container-img{
-  width: 300px;
-}
-
-.movie-grid-image {
-  border-radius: 5px;
-  height: 100%;
-  width: 100%;
-}
-
-img{
-  vertical-align: middle;
-}
