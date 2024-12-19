@@ -1,6 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import "../helpers/moviesApp.js";
+import { getMovies } from "../helpers/moviesApp";
 
 function MoviesCategory() {
+  const [movies, setMovies] = useState(null);
+  console.log(movies);
+
+  useEffect(() => {
+    traerPeliculas();
+  }, []);
+
+  const traerPeliculas = async () => {
+    const { data } = await getMovies();
+    setMovies(data);
+  };
+
   return (
     <>
       <div className="text-white">
