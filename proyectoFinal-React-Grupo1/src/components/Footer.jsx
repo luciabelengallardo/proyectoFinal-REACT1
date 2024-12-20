@@ -5,7 +5,7 @@ import logo from "../img/logomovienight.png";
 
 function Footer() {
   return (
-    <footer>
+    <footer className="main-content">
       <div className="footer_contenedor d-flex flex-column align-items-stretch">
         <div className="row d-flex justify-content-between">
           <div className="col-sm-12 col-md-4 ">
