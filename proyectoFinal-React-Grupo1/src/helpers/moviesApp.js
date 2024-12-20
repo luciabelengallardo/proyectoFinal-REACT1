@@ -11,6 +11,12 @@ export const getMovies = async () => {
       data.results.forEach((pelicula) => {
         console.log(pelicula.title);
       });
+
+      const pelicula = "";
+      data.results.forEach((pelicula) => {
+        pelicula = pelicula.title;
+      });
+      console.log(pelicula);
     } else if (peliculas.status === 401) {
       console.log("Pusiste mal la key");
     } else if (peliculas.status === 404) {
