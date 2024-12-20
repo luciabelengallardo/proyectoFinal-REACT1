@@ -22,6 +22,8 @@ function App() {
           <Route path="/*" element={<ErrorScreen />} />
           <Route path="/Login" element={<LoginScreen />} />
           <Route path="/Admin" element={<AdminScreen />} />
+          {/* <Route path="/Movies/:id" element={<MoviesCategory />} /> */}
+
           <Route path="/Movies" element={<MoviesCategory />} />
         </Routes>
         <Footer />

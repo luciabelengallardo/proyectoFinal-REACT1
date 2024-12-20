@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 //import homeScreen from "../data/movies-1.json"
 import "bootstrap/dist/css/bootstrap.min.css";
 import carousel1 from "../img/carousel1.jpg";
+import movieList from "../data/movies-1.json";
+import { Link } from "react-router-dom";
 
 function HomeScreen() {
   // console.log(homeScreen);
@@ -66,23 +68,27 @@ function HomeScreen() {
         </div>
         <div className="container mt-4">
           <h4>Categorías</h4>
+
           <div className="row">
-            {/* Card 1 */}
-            <div className="col-2">
-              <div className="card">
-                <img
-                  src="https://via.placeholder.com/400x200?text=Acción"
-                  className="card-img-top"
-                  alt="Acción"
-                />
-                <div className="card-body">
-                  <h5 className="card-title">Acción</h5>
-                  <p className="card-text">
-                    Películas llenas de emoción y adrenalina.
-                  </p>
+            {movieList.map((movie) => (
+              <div key={movie.id} className="col-2">
+                <div className="card">
+                  <img
+                    src={movie.image}
+                    className="card-img-top"
+                    alt={movie.title}
+                  />
+
+                  <div className="card-body">
+                    <Link to={`/Movies/${movie.id}`}>
+                      <h5 className="card-title">{movie.title}</h5>
+                    </Link>
+                    <p className="card-text">{movie.description}</p>
+                  </div>
                 </div>
               </div>
-            </div>
+            ))}
+            {/* Card 1 */}
 
             {/* Card 2 */}
             <div className="col-2">
