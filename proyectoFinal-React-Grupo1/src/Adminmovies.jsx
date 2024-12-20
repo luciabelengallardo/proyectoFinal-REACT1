@@ -89,12 +89,15 @@ const AdminMovies = () => {
     <div className="p-6">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold">Administrar Películas</h1>
-        <button
+        {/* <button
           onClick={() => setShowNewMovieForm(true)}
           className="bg-blue-600 text-white px-4 py-2 rounded-md flex items-center gap-2"
         >
           ➕ Nuevo
-        </button>
+        </button> */}
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
       </div>
 
       <div className="mb-6 relative">
@@ -197,8 +200,18 @@ const AdminMovies = () => {
         </table>
       </div>
 
-      {showNewMovieForm && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+      {/* {showNewMovieForm && (
+        
+      )} */}
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
           <div className="bg-white p-6 rounded-lg w-96">
             <h2 className="text-xl font-bold mb-4">Agregar Nueva Película</h2>
             <div className="space-y-4">
@@ -247,7 +260,14 @@ const AdminMovies = () => {
             </div>
           </div>
         </div>
-      )}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
     </div>
   );
 };
