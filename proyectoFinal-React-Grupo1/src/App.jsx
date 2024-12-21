@@ -7,9 +7,9 @@ import NavBar from "./components/NavBar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomeScreen from "./pages/HomeScreen";
 import ErrorScreen from "./pages/ErrorScreen";
-import AdminScreen from "./pages/AdminScreen";
 import LoginScreen from "./pages/LoginScreen";
 import AboutUsScreen from "./pages/AboutUsScreen";
+import AdminMovies from "./pages/Adminmovies";
 
 function App() {
   return (
@@ -22,7 +22,7 @@ function App() {
           <Route path="/AboutUs" element={<AboutUsScreen />} />
           <Route path="/*" element={<ErrorScreen />} />
           <Route path="/Login" element={<LoginScreen />} />
-          <Route path="/Admin" element={<AdminScreen />} />
+          <Route path="/Admin" element={<AdminMovies />} />
         </Routes>
         <Footer />
       </BrowserRouter>
