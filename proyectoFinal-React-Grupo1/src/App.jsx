@@ -24,7 +24,7 @@ function App() {
           <Route path="/Admin" element={<AdminScreen />} />
           {/* <Route path="/Movies/:id" element={<MoviesCategory />} /> */}
 
-          <Route path="/Movies" element={<MoviesCategory />} />
+          <Route path="/Movies/:id" element={<MoviesCategory />} />
         </Routes>
         <Footer />
       </BrowserRouter>

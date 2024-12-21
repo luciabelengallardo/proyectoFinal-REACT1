@@ -3,13 +3,14 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import carousel1 from "../img/carousel1.jpg";
 import movieList from "../data/movies-1.json";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function HomeScreen() {
   // console.log(homeScreen);
   // const nuevoArreglo = homeScreen.filter((movie)=>{
   //   return movie.rank;
   // });
+  const navigate = useNavigate();
 
   return (
     <>
