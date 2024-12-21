@@ -3,6 +3,7 @@ import "./css/home.css";
 import "./css/footer.css";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
+import NavBar from "./components/NavBar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomeScreen from "./pages/HomeScreen";
 import ErrorScreen from "./pages/ErrorScreen";
@@ -15,6 +16,7 @@ function App() {
     <>
       <BrowserRouter>
         <NavBar />
+
         <Routes>
           <Route path="/" element={<HomeScreen />} />
           <Route path="/AboutUs" element={<AboutUsScreen />} />
