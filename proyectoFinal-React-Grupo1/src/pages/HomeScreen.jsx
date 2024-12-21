@@ -3,13 +3,23 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import carousel1 from "../img/carousel1.jpg";
 import movieList from "../data/movies-1.json";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function HomeScreen() {
   // console.log(homeScreen);
   // const nuevoArreglo = homeScreen.filter((movie)=>{
   //   return movie.rank;
   // });
+  const navigate = useNavigate();
+
+  const movieList1 = movieList.filter((movie) => {
+    return movie.rank;
+  });
+  console.log(movieList);
+
+  const handleMovieClick = (id) => {
+    navigate(`/movies/${id}`);
+  };
 
   return (
     <>
@@ -71,7 +81,11 @@ function HomeScreen() {
 
           <div className="row">
             {movieList.map((movie) => (
-              <div key={movie.id} className="col-2">
+              <div
+                key={movie.id}
+                onClick={() => handleMovieClick(movie.id)}
+                className="col-2"
+              >
                 <div className="card">
                   <img
                     src={movie.image}
@@ -80,9 +94,9 @@ function HomeScreen() {
                   />
 
                   <div className="card-body">
-                    <Link to={`/Movies/${movie.id}`}>
-                      <h5 className="card-title">{movie.title}</h5>
-                    </Link>
+                    {/* <Link to={`/Movies/${movie.id}`}> */}
+                    <h5 className="card-title">{movie.title}</h5>
+                    {/* </Link> */}
                     <p className="card-text">{movie.description}</p>
                   </div>
                 </div>
