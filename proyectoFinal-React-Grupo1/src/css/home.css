@@ -44,6 +44,9 @@ a {
   align-items: center;
 }
 
+.footer-link {
+  text-decoration: none;
+}
 /* @media screen and (min-width: 1024px) {
     .btn-iniciar-sesion {
       display: flex;

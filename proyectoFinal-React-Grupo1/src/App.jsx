@@ -9,6 +9,7 @@ import ErrorScreen from "./pages/ErrorScreen";
 import AdminScreen from "./pages/AdminScreen";
 import LoginScreen from "./pages/LoginScreen";
 import AboutUsScreen from "./pages/AboutUsScreen";
+import MoviesCategory from "./pages/MoviesCategory";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/*" element={<ErrorScreen />} />
           <Route path="/Login" element={<LoginScreen />} />
           <Route path="/Admin" element={<AdminScreen />} />
+          <Route path="/Movies" element={<MoviesCategory />} />
         </Routes>
         <Footer />
       </BrowserRouter>
