@@ -6,7 +6,6 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   color: white;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
 }
@@ -66,3 +65,52 @@ a {
 }
 
 
+#movieCarousel{
+  & img{
+    border-radius: 10px;
+    animation: animacionCarousel 0.5s;
+    &:hover{
+      transform: scale(1.05);
+      border: solid 2px #fff ;
+      cursor: pointer;
+      animation: animacionHover 0.5s;
+
+    }
+  }
+}
+
+#categorias{
+  & .card{
+    background-color: #0F131B;
+    box-shadow: rgba(0, 0, 0, 0.7) 0px 25px 30px -10px;
+    &:hover{
+      transform: scale(1.05);
+      border: solid 2px #fff ;
+      cursor: pointer;
+      animation: animacionHover 0.5s;
+
+    }
+  }
+}
+
+.carouselDestacadas{
+  min-height: calc(100vh - 160px);
+}
+
+@keyframes animacionCarousel{
+  0%{
+    transform: scale(1.05);
+  }
+  100%{
+    transform: scale(1);
+  }
+}
+
+@keyframes animacionHover{
+  0%{
+    transform: scale(1);
+  }
+  100%{
+    transform: scale(1.05);
+  }
+}

@@ -1,6 +1,7 @@
 import React from 'react'
 //import homeScreen from "../data/movies-1.json"
 import "bootstrap/dist/css/bootstrap.min.css";
+import Carousel from '../components/Carousel';
 
 
 function HomeScreen() {
@@ -12,124 +13,100 @@ function HomeScreen() {
   return (
     <>
     <div className="carouselDestacadas" >
-      <h3>Peliculas</h3>
       <div id="movieCarousel" className="carousel slide" data-bs-ride="carousel">
         <div className="carousel-inner">
-          {/* Agrega las imágenes de las películas dentro del carrusel */}
           <div className="carousel-item active">
             <img
               className="d-block w-100"
-              src="https://via.placeholder.com/800x400?text=Película+1"
+              src="/src/img/carousel1.jpg"
               alt="Película 1"
             />
           </div>
           <div className="carousel-item">
             <img
               className="d-block w-100"
-              src="https://via.placeholder.com/800x400?text=Película+2"
+              src="/src/img/carousel2.jpg"
               alt="Película 2"
             />
           </div>
           <div className="carousel-item">
             <img
               className="d-block w-100"
-              src="https://via.placeholder.com/800x400?text=Película+3"
+              src="/src/img/carousel3.jpg"
               alt="Película 3"
+            />
+          </div>
+          <div className="carousel-item">
+            <img
+              className="d-block w-100"
+              src="/src/img/carousel4.jpg"
+              alt="Película 4"
             />
           </div>
         </div>
         {/* Controles de navegación del carrusel */}
-        <button
-          className="carousel-control-prev"
-          type="button"
-          data-bs-target="#movieCarousel"
-          data-bs-slide="prev"
-        >
-          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span className="visually-hidden">Previous</span>
-        </button>
-        <button
-          className="carousel-control-next"
-          type="button"
-          data-bs-target="#movieCarousel"
-          data-bs-slide="next"
-        >
-          <span className="carousel-control-next-icon" aria-hidden="true"></span>
-          <span className="visually-hidden">Next</span>
-        </button>
+
+
       </div>
-      <div className="container mt-4">
+      <div className="container  mt-4" id='categorias'>
         <h4>Categorías</h4>
         <div className="row">
           {/* Card 1 */}
           <div className="col-2">
             <div className="card">
-              <img src="https://via.placeholder.com/400x200?text=Acción" className="card-img-top" alt="Acción" />
-              <div className="card-body">
-                <h5 className="card-title">Acción</h5>
-                <p className="card-text">Películas llenas de emoción y adrenalina.</p>
-              </div>
+              <img src="https://mkwiecien00.github.io/disney-plus-clone/assets/disney-vv8h4tT8.jpg" className="card-img-top" alt="Acción" />
+
             </div>
           </div>
 
           {/* Card 2 */}
           <div className="col-2">
             <div className="card">
-              <img src="https://via.placeholder.com/400x200?text=Aventura" className="card-img-top" alt="Aventura" />
-              <div className="card-body">
-                <h5 className="card-title">Aventura</h5>
-                <p className="card-text">Exploraciones y viajes emocionantes.</p>
-              </div>
+              <img src="https://mkwiecien00.github.io/disney-plus-clone/assets/pixar-jXfep6Jc.jpg" className="card-img-top" alt="Aventura" />
+
             </div>
           </div>
 
           {/* Card 3 */}
           <div className="col-2">
             <div className="card">
-              <img src="https://via.placeholder.com/400x200?text=Comedia" className="card-img-top" alt="Comedia" />
-              <div className="card-body">
-                <h5 className="card-title">Comedia</h5>
-                <p className="card-text">Películas divertidas para relajarte.</p>
-              </div>
+              <img src="https://mkwiecien00.github.io/disney-plus-clone/assets/marvel-U-4dq8Yw.jpg" className="card-img-top" alt="Comedia" />
+
             </div>
           </div>
 
           {/* Card 4 */}
           <div className="col-2">
             <div className="card">
-              <img src="https://via.placeholder.com/400x200?text=Drama" className="card-img-top" alt="Drama" />
-              <div className="card-body">
-                <h5 className="card-title">Drama</h5>
-                <p className="card-text">Historias profundas y conmovedoras.</p>
-              </div>
+              <img src="https://mkwiecien00.github.io/disney-plus-clone/assets/starwars-KsEV6PSt.jpg" className="card-img-top" alt="Drama" />
+
             </div>
           </div>
 
           {/* Card 5 */}
           <div className="col-2">
             <div className="card">
-              <img src="https://via.placeholder.com/400x200?text=Fantasía" className="card-img-top" alt="Fantasía" />
-              <div className="card-body">
-                <h5 className="card-title">Fantasía</h5>
-                <p className="card-text">Mundos mágicos e imaginativos.</p>
-              </div>
+              <img src="https://mkwiecien00.github.io/disney-plus-clone/assets/national-geographic-zll0PvSe.jpg" className="card-img-top" alt="Fantasía" />
+
             </div>
           </div>
 
           {/* Card 6 */}
           <div className="col-2">
             <div className="card">
-              <img src="https://via.placeholder.com/400x200?text=Romántica" className="card-img-top" alt="Romántica" />
-              <div className="card-body">
-                <h5 className="card-title">Romántica</h5>
-                <p className="card-text">Historias de amor y pasión.</p>
-              </div>
+              <img src="https://mkwiecien00.github.io/disney-plus-clone/assets/star-L89nWIK3.jpg" className="card-img-top" alt="Romántica" />
+
             </div>
           </div>
         </div>
       </div>
 
     </div>
+    <Carousel titulo={"Popular Movies"}/>
+    <Carousel titulo={"Popular Series"}/>
+    <Carousel titulo={"Popular Series"}/>
+    <Carousel titulo={"Popular Series"}/>
+
     </>
   );
 }
