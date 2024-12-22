@@ -49,7 +49,6 @@ function HomeScreen() {
 
       </div>
       <div className="container  mt-4" id='categorias'>
-        <h4>Categorías</h4>
         <div className="row">
           {/* Card 1 */}
           <div className="col-2">

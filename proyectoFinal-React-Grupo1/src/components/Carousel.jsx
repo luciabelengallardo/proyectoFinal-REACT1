@@ -1,17 +1,28 @@
 import React from "react";
 import "/src/css/carousel.css";
-// import { Carousel } from "react-bootstrap";
+import { Carousel } from "react-bootstrap";
+import 'bootstrap/dist/css/bootstrap.min.css'
 
-function CarouselPeliculas() {
-  return <div></div>;
-}
+
 
 function CarouselCustom({ titulo }) {
   return (
     <div className="carouselCustom container">
       <h1>{titulo}</h1>
 
-      {/* <Carousel></Carousel> */}
+       <Carousel>
+       <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src="/src/img/carousel1.jpg"
+          alt="First slide"
+        />
+        
+
+        
+      </Carousel.Item>
+
+        </Carousel> 
     </div>
   );
 }

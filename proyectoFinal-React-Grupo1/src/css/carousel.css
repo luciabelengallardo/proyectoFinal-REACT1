@@ -1,4 +1,10 @@
 .carouselCustom{
+    background-color: red;
+    height: fit-content;
+    & img{
+        width: 20%!important;
+        aspect-ratio: 9/16;
+    }
     & h1{
         color: #fff;
         font-size: 25px;
