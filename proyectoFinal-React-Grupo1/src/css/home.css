@@ -8,6 +8,7 @@ body {
   color: white;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 }
 
 main {
@@ -94,7 +95,7 @@ aspect-ratio: 4/1;
 }
 
 .carouselDestacadas {
-  min-height: calc(100vh - 160px);
+  margin-bottom: 40px;
 }
 
 @keyframes animacionCarousel {
