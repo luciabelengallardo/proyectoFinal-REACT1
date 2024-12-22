@@ -41,7 +41,7 @@ function LoginScreen({ usuario, setUsuario }) {
     if (u && formValues.password === u.password) {
       u.rol == "admin" ? navigate("/admin") : navigate("/");
       localStorage.setItem("email", u.email);
-      setUsuario(u.email);
+      setUsuario(u);
     } else {
       alert("Email o contraseña incorrecto!");
     }
