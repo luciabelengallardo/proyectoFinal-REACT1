@@ -8,7 +8,7 @@ margin-bottom: 40px;
         margin-right: 30px;
         border-radius: 10px;
         &:hover {
-            transform: scale(1.2);
+            transform: scale(1.1);
             border: solid 2px #fff;
             cursor: pointer;
             animation: animacionPeliculasin 0.5s;
@@ -31,6 +31,10 @@ margin-bottom: 40px;
         margin-top: -20px;
     }
 
+    & .carousel-inner{
+        overflow: initial;
+    }
+
     & .carousel-item{
         padding: 0;
         height: fit-content;
@@ -46,7 +50,7 @@ display: none;
 
 @keyframes animacionPeliculasout {
     0% {
-      transform: scale(1.2);
+      transform: scale(1.1);
     }
     100% {
       transform: scale(1);
@@ -58,6 +62,6 @@ display: none;
       transform: scale(1);
     }
     100% {
-      transform: scale(1.2);
+      transform: scale(1.1);
     }
   }

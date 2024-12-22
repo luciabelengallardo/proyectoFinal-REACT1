@@ -117,8 +117,11 @@ function HomeScreen() {
         </div>
       </div>
 
-    <Carousel titulo={"Popular Movies"} items={peliculas}/>
-    <Carousel titulo={"Popular Series"} items={peliculas}/>
+    <Carousel titulo={"Comedia"} items={peliculas}/>
+    <Carousel titulo={"Accion"} items={peliculas}/>
+    <Carousel titulo={"Drama"} items={peliculas}/>
+    <Carousel titulo={"Series"} items={peliculas}/>
+
 
     </>
   );

@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import "/src/css/carousel.css";
 import { Carousel } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useNavigate } from "react-router-dom";
 
 function CarouselCustom({ titulo, items }) {
   const [peliculas, setPeliculas] = useState([]);
+  const navigate = useNavigate();
 
   const agruparItems = (lista, numero) => {
     const grupo = [];
@@ -32,7 +34,7 @@ function CarouselCustom({ titulo, items }) {
             <Carousel.Item key={index}>
               <div className="d-block w-100">
                 {listado.map((pelicula) => {
-                  return ( <img key={pelicula.rank} src={pelicula.image} alt={pelicula.title} />)
+                  return ( <img onClick={()=>navigate("/movies/"+pelicula.id)} key={pelicula.rank} src={pelicula.image} alt={pelicula.title} />)
                 })}
               </div>
             </Carousel.Item>
