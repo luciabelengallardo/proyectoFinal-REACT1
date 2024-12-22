@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../img/logomovienight.png";
+import "../css/navbar.css";
 
 function NavBar({ usuario, setUsuario }) {
   return (
@@ -22,43 +23,54 @@ function NavBar({ usuario, setUsuario }) {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav d-flex align-items-center">
-              <li className="nav-item">
-                <Link
-                  className="nav-link active text-white"
-                  aria-current="page"
-                  to="/"
-                >
-                  Inicio
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link text-white" to="/Movies">
-                  Peliculas
-                </Link>
-              </li>
-
-              <li className="nav-item btn btn-outline-secondary btn-iniciar-sesion">
-                <Link
-                  onClick={() => {
-                    localStorage.removeItem("email");
-                    setUsuario("");
-                  }}
-                  className="nav-link text-white"
-                  to="/Login"
-                >
-                  {usuario ? "Cerrar Sesion" : "Iniciar Sesion"}
-                </Link>
-              </li>
-            </ul>
-
-            {usuario && (
-              <div>
-                <p className="text-white">{usuario}</p>
-                <i class="bi bi-person-circle text-white"></i>
-              </div>
-            )}
+            <div className="d-flex">
+              <ul className="navbar-nav d-flex align-items-center">
+                <li className="nav-item">
+                  <Link
+                    className="nav-link active text-white"
+                    aria-current="page"
+                    to="/"
+                  >
+                    <i className="bi bi-house-fill "></i>
+                    Inicio
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link text-white" to="/Movies">
+                    <i className="bi bi-film"></i>
+                    Peliculas
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link text-white" to="/series">
+                    <i className="bi bi-tv"></i>
+                    Series
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div className="nav-item btn btn-outline-secondary btn-iniciar-sesion">
+              <Link
+                onClick={() => {
+                  localStorage.removeItem("email");
+                  setUsuario("");
+                }}
+                className="nav-link text-white"
+                to="/Login"
+              >
+                {usuario ? "Cerrar Sesion" : "Iniciar Sesion"}
+              </Link>
+            </div>
           </div>
+        </div>
+
+        <div className="">
+          {usuario && (
+            <div className="d-flex">
+              <span className="text-white username">{usuario}</span>
+              <i class="bi bi-person-circle text-white profile-circle"></i>
+            </div>
+          )}
         </div>
       </nav>
     </>

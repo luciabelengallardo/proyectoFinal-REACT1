@@ -59,43 +59,59 @@ function HomeScreen() {
             </div>
           </div>
 
-          {/* Card 2 */}
-          <div className="col-2">
-            <div className="card">
-              <img src="https://mkwiecien00.github.io/disney-plus-clone/assets/pixar-jXfep6Jc.jpg" className="card-img-top" alt="Aventura" />
-
+            {/* Card 2 */}
+            <div className="col-2">
+              <div className="card">
+                <img
+                  src="https://mkwiecien00.github.io/disney-plus-clone/assets/pixar-jXfep6Jc.jpg"
+                  className="card-img-top"
+                  alt="Aventura"
+                />
+              </div>
             </div>
-          </div>
 
-          {/* Card 3 */}
-          <div className="col-2">
-            <div className="card">
-              <img src="https://mkwiecien00.github.io/disney-plus-clone/assets/marvel-U-4dq8Yw.jpg" className="card-img-top" alt="Comedia" />
-
+            {/* Card 3 */}
+            <div className="col-2">
+              <div className="card">
+                <img
+                  src="https://mkwiecien00.github.io/disney-plus-clone/assets/marvel-U-4dq8Yw.jpg"
+                  className="card-img-top"
+                  alt="Comedia"
+                />
+              </div>
             </div>
-          </div>
 
-          {/* Card 4 */}
-          <div className="col-2">
-            <div className="card">
-              <img src="https://mkwiecien00.github.io/disney-plus-clone/assets/starwars-KsEV6PSt.jpg" className="card-img-top" alt="Drama" />
-
+            {/* Card 4 */}
+            <div className="col-2">
+              <div className="card">
+                <img
+                  src="https://mkwiecien00.github.io/disney-plus-clone/assets/starwars-KsEV6PSt.jpg"
+                  className="card-img-top"
+                  alt="Drama"
+                />
+              </div>
             </div>
-          </div>
 
-          {/* Card 5 */}
-          <div className="col-2">
-            <div className="card">
-              <img src="https://mkwiecien00.github.io/disney-plus-clone/assets/national-geographic-zll0PvSe.jpg" className="card-img-top" alt="Fantasía" />
-
+            {/* Card 5 */}
+            <div className="col-2">
+              <div className="card">
+                <img
+                  src="https://mkwiecien00.github.io/disney-plus-clone/assets/national-geographic-zll0PvSe.jpg"
+                  className="card-img-top"
+                  alt="Fantasía"
+                />
+              </div>
             </div>
-          </div>
 
-          {/* Card 6 */}
-          <div className="col-2">
-            <div className="card">
-              <img src="https://mkwiecien00.github.io/disney-plus-clone/assets/star-L89nWIK3.jpg" className="card-img-top" alt="Romántica" />
-
+            {/* Card 6 */}
+            <div className="col-2">
+              <div className="card">
+                <img
+                  src="https://mkwiecien00.github.io/disney-plus-clone/assets/star-L89nWIK3.jpg"
+                  className="card-img-top"
+                  alt="Romántica"
+                />
+              </div>
             </div>
           </div>
         </div>

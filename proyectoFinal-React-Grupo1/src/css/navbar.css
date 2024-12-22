@@ -1,0 +1,39 @@
+.nav-link {
+  letter-spacing: 1.42px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 0;
+}
+
+.nav-link i {
+  font-size: 16px;
+  padding: 5px;
+}
+
+.username {
+  color: #f9f9f9;
+  font-size: 13px;
+  letter-spacing: 1px;
+  padding: 5px;
+}
+
+.profile-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #31343e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.navbar-collapse {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-iniciar-sesion {
+  text-transform: uppercase;
+}
