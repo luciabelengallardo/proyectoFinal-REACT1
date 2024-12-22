@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../css/login.css";
 
 const users = [
@@ -88,6 +88,12 @@ function LoginScreen({ usuario, setUsuario }) {
             </div>
           </form>
         </div>
+        <p className="text-secondary pt-3">
+          Nuevo en Movie Night?{" "}
+          <Link to="/registro">
+            <strong>Registrate Ahora</strong>
+          </Link>
+        </p>
       </div>
     </>
   );

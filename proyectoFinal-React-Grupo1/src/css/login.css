@@ -1,6 +1,9 @@
 .login-container {
   min-height: 80vh;
 }
+a {
+  color: darkgray;
+}
 
 .login-form {
   width: 100%;

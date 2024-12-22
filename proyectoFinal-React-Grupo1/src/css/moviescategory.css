@@ -60,7 +60,9 @@
   cursor: pointer;
   transition: all 0.2s ease;
 }
-
+a {
+  text-decoration: none;
+}
 .play-button {
   background-color: white;
   color: black;
