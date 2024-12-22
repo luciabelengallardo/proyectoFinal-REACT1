@@ -8,16 +8,6 @@ function HomeScreen() {
   // const nuevoArreglo = homeScreen.filter((movie)=>{
   //   return movie.rank;
   // });
-  const navigate = useNavigate();
-
-  const movieList1 = movieList.filter((movie) => {
-    return movie.rank;
-  });
-  console.log(movieList);
-
-  const handleMovieClick = (id) => {
-    navigate(`/movies/${id}`);
-  };
 
   return (
     <>

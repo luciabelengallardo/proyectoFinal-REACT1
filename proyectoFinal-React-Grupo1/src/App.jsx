@@ -18,28 +18,23 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <NavBar />
+        <NavBar usuario={usuario} setUsuario={setUsuario} />
+
         <main>
           <Routes>
             <Route path="/" element={<HomeScreen />} />
             <Route path="/AboutUs" element={<AboutUsScreen />} />
             <Route path="/*" element={<ErrorScreen />} />
-            <Route path="/Login" element={<LoginScreen />} />
-            <Route path="/Movies" element={<MoviesCategory />} />
+            <Route
+              path="/Login"
+              element={
+                <LoginScreen usuario={usuario} setUsuario={setUsuario} />
+              }
+            />
+            <Route path="/Admin" element={<AdminMovies />} />
           </Routes>
         </main>
-        <NavBar usuario={usuario} setUsuario={setUsuario} />
 
-        <Routes>
-          <Route path="/" element={<HomeScreen />} />
-          <Route path="/AboutUs" element={<AboutUsScreen />} />
-          <Route path="/*" element={<ErrorScreen />} />
-          <Route
-            path="/Login"
-            element={<LoginScreen usuario={usuario} setUsuario={setUsuario} />}
-          />
-          <Route path="/Admin" element={<AdminMovies />} />
-        </Routes>
         <Footer />
       </BrowserRouter>
     </>
