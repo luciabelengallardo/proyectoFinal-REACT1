@@ -32,6 +32,7 @@ function App() {
               }
             />
             <Route path="/Admin" element={<AdminMovies />} />
+            <Route path="/Movies/:id" element={<MoviesCategory />} />
           </Routes>
         </main>
 
