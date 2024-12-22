@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { Movienight } from "../data/Movienight";
 import "../css/moviescategory.css";
 
@@ -26,13 +26,19 @@ const MoviesCategory = () => {
 
           <div className="movie-info">
             <div className="button-container">
-              <button className="play-button">
-                <span className="mx-1">▶</span> PLAY
-              </button>
-              <button className="trailer-button">
-                <span className="mx-1">▶</span> TRAILER
-              </button>
-              <button className="add-button">+</button>
+              <Link to="/play">
+                <button className="play-button">
+                  <span className="mx-1">▶</span> PLAY
+                </button>
+              </Link>
+              <Link to="/trailer">
+                <button className="trailer-button">
+                  <span className="mx-1">▶</span> TRAILER
+                </button>
+              </Link>
+              <Link to="/favorites">
+                <button className="add-button">+</button>
+              </Link>
             </div>
 
             <div className="movie-details m-2">
