@@ -11,6 +11,7 @@ function HomeScreen() {
  //   return movie.rank;
  // });
   const [peliculas, setPeliculas]= useState(Movienight)
+  
   return (
     <>
     <div className="carouselDestacadas" >
@@ -117,10 +118,10 @@ function HomeScreen() {
         </div>
       </div>
 
-    <Carousel titulo={"Comedia"} items={peliculas}/>
-    <Carousel titulo={"Accion"} items={peliculas}/>
-    <Carousel titulo={"Drama"} items={peliculas}/>
-    <Carousel titulo={"Series"} items={peliculas}/>
+    <Carousel titulo={"Comedia"} items={peliculas[0]}/>
+    <Carousel titulo={"Accion"} items={peliculas[1]}/>
+    <Carousel titulo={"Drama"} items={peliculas[2]}/>
+    <Carousel titulo={"Series"} items={peliculas[3]}/>
 
 
     </>
