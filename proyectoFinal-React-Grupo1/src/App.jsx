@@ -16,14 +16,16 @@ function App() {
     <>
       <BrowserRouter>
         <NavBar />
-        <Routes>
-          <Route path="/" element={<HomeScreen />} />
-          <Route path="/AboutUs" element={<AboutUsScreen />} />
-          <Route path="/*" element={<ErrorScreen />} />
-          <Route path="/Login" element={<LoginScreen />} />
-          <Route path="/Admin" element={<AdminScreen />} />
-          <Route path="/Movies" element={<MoviesCategory />} />
-        </Routes>
+        <main>
+          <Routes>
+            <Route path="/" element={<HomeScreen />} />
+            <Route path="/AboutUs" element={<AboutUsScreen />} />
+            <Route path="/*" element={<ErrorScreen />} />
+            <Route path="/Login" element={<LoginScreen />} />
+            <Route path="/Admin" element={<AdminScreen />} />
+            <Route path="/Movies" element={<MoviesCategory />} />
+          </Routes>
+        </main>
         <Footer />
       </BrowserRouter>
     </>
