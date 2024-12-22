@@ -1,24 +1,35 @@
 import React from "react";
+import movieList from "../data/movies-1.json";
+import { useParams } from "react-router-dom";
+import "../css/moviescategory.css";
 
-function MoviesCategory() {
+console.log(movieList);
+
+function MoviesCategory({ movie }) {
+  const { id } = useParams();
+
   return (
     <>
-      <div className="text-white">
-        <div className="container">
-          <img src="" alt="" />
-        </div>
-        <div>
-          <button>PLAY</button>
-          <button>TRAILER</button>
-          <button>+</button>
-        </div>
-        <p>1999 - Comedia, Familia, Aventura</p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas fugiat
-          incidunt veritatis obcaecati corrupti dolorem facilis quasi quisquam
-          delectus
-        </p>
-        <button>Volver</button>
+      <div className="container text-white">
+        {movieList.map((movie) => (
+          <div key={movie.id} className="text-center contenedor-img">
+            {/* <img src={movie.image} alt={movie.title} /> */}
+            <div className={`movie bg movie-bg-${movie.id}`}>
+              <div className="text-white">
+                <div className="text-overlay">
+                  <button>PLAY</button>
+                  <button>TRAILER</button>
+                  <button>+</button>
+                </div>
+                <p>
+                  {movie.year} - {movie.genre}
+                </p>
+                <p>{movie.description}</p>
+              </div>
+              <button>Volver</button>
+            </div>
+          </div>
+        ))}
       </div>
     </>
   );
