@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../img/logomovienight.png";
 
-function NavBar() {
+function NavBar({ usuario, setUsuario }) {
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-navbar">
@@ -39,11 +39,25 @@ function NavBar() {
               </li>
 
               <li className="nav-item btn btn-outline-secondary btn-iniciar-sesion">
-                <Link className="nav-link text-white" to="/login">
-                  Iniciar Sesion
+                <Link
+                  onClick={() => {
+                    localStorage.removeItem("email");
+                    setUsuario("");
+                  }}
+                  className="nav-link text-white"
+                  to="/Login"
+                >
+                  {usuario ? "Cerrar Sesion" : "Iniciar Sesion"}
                 </Link>
               </li>
             </ul>
+
+            {usuario && (
+              <div>
+                <p className="text-white">{usuario}</p>
+                <i class="bi bi-person-circle text-white"></i>
+              </div>
+            )}
           </div>
         </div>
       </nav>
