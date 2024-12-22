@@ -8,6 +8,7 @@ import HomeScreen from "./pages/HomeScreen";
 import ErrorScreen from "./pages/ErrorScreen";
 import LoginScreen from "./pages/LoginScreen";
 import AboutUsScreen from "./pages/AboutUsScreen";
+import MoviesCategory from "./pages/MoviesCategory";
 import AdminMovies from "./pages/Adminmovies";
 import { useState } from "react";
 
@@ -17,6 +18,17 @@ function App() {
   return (
     <>
       <BrowserRouter>
+        <NavBar />
+        <main>
+          <Routes>
+            <Route path="/" element={<HomeScreen />} />
+            <Route path="/AboutUs" element={<AboutUsScreen />} />
+            <Route path="/*" element={<ErrorScreen />} />
+            <Route path="/Login" element={<LoginScreen />} />
+            <Route path="/Admin" element={<AdminScreen />} />
+            <Route path="/Movies" element={<MoviesCategory />} />
+          </Routes>
+        </main>
         <NavBar usuario={usuario} setUsuario={setUsuario} />
 
         <Routes>
