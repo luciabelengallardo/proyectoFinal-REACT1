@@ -1,17 +1,46 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "/src/css/carousel.css";
-// import { Carousel } from "react-bootstrap";
+import { Carousel } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { useNavigate } from "react-router-dom";
 
-function CarouselPeliculas() {
-  return <div></div>;
-}
+function CarouselCustom({ titulo, items }) {
+  const [peliculas, setPeliculas] = useState([]);
+  const navigate = useNavigate();
 
-function CarouselCustom({ titulo }) {
+  const agruparItems = (lista, numero) => {
+    const grupo = [];
+    for (let i = 0; i < lista.length; i += numero) {
+      grupo.push(lista.slice(i, i + numero));
+    }
+    return grupo;
+  };
+
+  const fetchItems = async () => {
+    setPeliculas(agruparItems(items.filter(i => i.disponible), 5));
+  };
+
+  useEffect(() => {
+    fetchItems();
+  }, []);
   return (
     <div className="carouselCustom container">
       <h1>{titulo}</h1>
 
-      {/* <Carousel></Carousel> */}
+      <Carousel interval={null}>
+        {peliculas.map((listado, index) => {
+            
+          return (
+            <Carousel.Item key={index}>
+              <div className="d-block w-100">
+                {listado.map((pelicula) => {
+                  return ( <img onClick={()=>navigate("/movies/"+pelicula.id)} key={pelicula.rank} src={pelicula.image} alt={pelicula.title} />)
+                })}
+              </div>
+            </Carousel.Item>
+          )
+        })}
+      </Carousel>
     </div>
   );
 }

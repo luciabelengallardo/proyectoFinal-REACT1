@@ -1,67 +1,63 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 //import homeScreen from "../data/movies-1.json"
 import "bootstrap/dist/css/bootstrap.min.css";
-import Carousel from "../components/Carousel";
+import Carousel from '../components/Carousel';
+import { Movienight } from "../data/Movienight";
+
 
 function HomeScreen() {
-  // console.log(homeScreen);
-  // const nuevoArreglo = homeScreen.filter((movie)=>{
-  //   return movie.rank;
-  // });
-
+ // console.log(homeScreen);
+ // const nuevoArreglo = homeScreen.filter((movie)=>{
+ //   return movie.rank;
+ // });
+  const [peliculas, setPeliculas]= useState(Movienight)
   return (
     <>
-      <div className="carouselDestacadas">
-        <div
-          id="movieCarousel"
-          className="carousel slide"
-          data-bs-ride="carousel"
-        >
-          <div className="carousel-inner">
-            <div className="carousel-item active">
-              <img
-                className="d-block w-100"
-                src="/src/img/carousel1.jpg"
-                alt="Película 1"
-              />
-            </div>
-            <div className="carousel-item">
-              <img
-                className="d-block w-100"
-                src="/src/img/carousel2.jpg"
-                alt="Película 2"
-              />
-            </div>
-            <div className="carousel-item">
-              <img
-                className="d-block w-100"
-                src="/src/img/carousel3.jpg"
-                alt="Película 3"
-              />
-            </div>
-            <div className="carousel-item">
-              <img
-                className="d-block w-100"
-                src="/src/img/carousel4.jpg"
-                alt="Película 4"
-              />
+    <div className="carouselDestacadas" >
+      <div id="movieCarousel" className="carousel slide" data-bs-ride="carousel">
+        <div className="carousel-inner">
+          <div className="carousel-item active">
+            <img
+              className="d-block w-100"
+              src="/src/img/carousel1.jpg"
+              alt="Película 1"
+            />
+          </div>
+          <div className="carousel-item">
+            <img
+              className="d-block w-100"
+              src="/src/img/carousel2.jpg"
+              alt="Película 2"
+            />
+          </div>
+          <div className="carousel-item">
+            <img
+              className="d-block w-100"
+              src="/src/img/carousel3.jpg"
+              alt="Película 3"
+            />
+          </div>
+          <div className="carousel-item">
+            <img
+              className="d-block w-100"
+              src="/src/img/carousel4.jpg"
+              alt="Película 4"
+            />
+          </div>
+        </div>
+        {/* Controles de navegación del carrusel */}
+
+
+      </div>
+      <div className="container  mt-4" id='categorias'>
+        <div className="row">
+          {/* Card 1 */}
+          <div className="col-2">
+            <div className="card">
+              <img src="https://mkwiecien00.github.io/disney-plus-clone/assets/disney-vv8h4tT8.jpg" className="card-img-top" alt="Acción" />
+
             </div>
           </div>
-          {/* Controles de navegación del carrusel */}
-        </div>
-        <div className="container  mt-4" id="categorias">
-          <h4>Categorías</h4>
-          <div className="row">
-            {/* Card 1 */}
-            <div className="col-2">
-              <div className="card">
-                <img
-                  src="https://mkwiecien00.github.io/disney-plus-clone/assets/disney-vv8h4tT8.jpg"
-                  className="card-img-top"
-                  alt="Acción"
-                />
-              </div>
-            </div>
 
             {/* Card 2 */}
             <div className="col-2">
@@ -120,10 +116,13 @@ function HomeScreen() {
           </div>
         </div>
       </div>
-      <Carousel titulo={"Popular Movies"} />
-      <Carousel titulo={"Popular Series"} />
-      <Carousel titulo={"Popular Series"} />
-      <Carousel titulo={"Popular Series"} />
+
+    <Carousel titulo={"Comedia"} items={peliculas}/>
+    <Carousel titulo={"Accion"} items={peliculas}/>
+    <Carousel titulo={"Drama"} items={peliculas}/>
+    <Carousel titulo={"Series"} items={peliculas}/>
+
+
     </>
   );
 }
