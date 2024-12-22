@@ -1,4 +1,7 @@
 // import "./App.css";
+import "./css/home.css";
+import "./css/footer.css";
+import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
 import AdminMovies from "./Adminmovies";
@@ -6,13 +9,13 @@ import AdminMovies from "./Adminmovies";
 function App() {
   return (
     <>
-      <div>
+      <BrowserRouter>
         <NavBar />
       </div>
       <AdminMovies />
       <div>
         <Footer />
-      </div>
+      </BrowserRouter>
     </>
   );
 }
