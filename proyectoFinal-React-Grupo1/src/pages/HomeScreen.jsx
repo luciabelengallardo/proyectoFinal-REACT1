@@ -1,15 +1,10 @@
 import React, { useState } from 'react'
-//import homeScreen from "../data/movies-1.json"
 import "bootstrap/dist/css/bootstrap.min.css";
 import Carousel from '../components/Carousel';
 import { Movienight } from "../data/Movienight";
 
 
 function HomeScreen() {
- // console.log(homeScreen);
- // const nuevoArreglo = homeScreen.filter((movie)=>{
- //   return movie.rank;
- // });
   const [peliculas, setPeliculas]= useState(Movienight)
   
   return (

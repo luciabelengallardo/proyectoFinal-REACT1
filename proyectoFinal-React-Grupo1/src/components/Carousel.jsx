@@ -6,6 +6,9 @@ import { useNavigate } from "react-router-dom";
 
 function CarouselCustom({ titulo, items }) {
   const [peliculas, setPeliculas] = useState([]);
+  const [cantItems, setCantItems] = useState(window.innerWidth > 768 ? 5 : 3);
+  const [w, setW] = useState();
+
   const navigate = useNavigate();
 
   const agruparItems = (lista, numero) => {
@@ -17,10 +20,26 @@ function CarouselCustom({ titulo, items }) {
   };
 
   const fetchItems = async () => {
-    setPeliculas(agruparItems(items.filter(i => i.disponible), 5));
+    setPeliculas(
+      agruparItems(
+        items.filter((i) => i.disponible),
+        cantItems
+      )
+    );
   };
 
   useEffect(() => {
+    window.addEventListener('resize', (e)=>{
+        
+        setCantItems(window.innerWidth > 768 ? 5 : 3);
+        setPeliculas(
+            agruparItems(
+              items.filter((i) => i.disponible),
+              window.innerWidth > 768 ? 5 : 3
+            )
+          );
+
+  });
     fetchItems();
   }, []);
   return (
@@ -29,16 +48,22 @@ function CarouselCustom({ titulo, items }) {
 
       <Carousel interval={null}>
         {peliculas.map((listado, index) => {
-            
           return (
             <Carousel.Item key={index}>
               <div className="d-block w-100">
                 {listado.map((pelicula) => {
-                  return ( <img onClick={()=>navigate("/movies/"+pelicula.id)} key={pelicula.rank} src={pelicula.image} alt={pelicula.title} />)
+                  return (
+                    <img
+                      onClick={() => navigate("/movies/" + pelicula.id)}
+                      key={pelicula.rank}
+                      src={pelicula.image}
+                      alt={pelicula.title}
+                    />
+                  );
                 })}
               </div>
             </Carousel.Item>
-          )
+          );
         })}
       </Carousel>
     </div>

@@ -8,7 +8,6 @@ body {
   color: white;
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;
 }
 
 main {
@@ -55,16 +54,25 @@ a {
 .footer-link {
   text-decoration: none;
 }
-/* @media screen and (min-width: 1024px) {
-    .btn-iniciar-sesion {
-      display: flex;
-      justify-content: end;
-    }
-  } */
+@media screen and (max-width: 768px) {
+  .col-2 {
+    flex: 1 1 30% !important;
+    padding-bottom: calc(var(--bs-gutter-x)* .5)!important;
+  }
+
+  .container {
+    display: flex;
+    height: fit-content!important;
+    flex-wrap: wrap !important;
+    gap: 5% !important;
+    max-width: 90vw !important;
+  }
+
+}
 
 .carousel-item {
   width: 100%;
-aspect-ratio: 4/1;
+  aspect-ratio: 4/1;
   display: flex;
   justify-content: center;
   align-items: center;

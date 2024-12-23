@@ -22,13 +22,17 @@ margin-bottom: 40px;
         font-size: 25px;
     }
     & .carousel-control-next{
-        margin-right: -80px;
-        margin-top: -20px;
+        width: 30px;
+        position: absolute;
+        right: 0;
+        top: 0;
 
     }
     & .carousel-control-prev{
-        margin-left: -80px;
-        margin-top: -20px;
+        width: 30px;
+        position: absolute;
+        left: 0;
+        top: 0;
     }
 
     & .carousel-inner{
@@ -45,8 +49,19 @@ margin-bottom: 40px;
 display: none;
     }
     
+    & .carousel{
+        padding: 0 30px;
+        position: relative;
+    }
 
 }
+
+@media screen and (max-width: 768px) {
+
+  .carouselCustom img{
+margin-right: 10px;
+    width: calc((100% - 30px)/3)!important;
+  }}
 
 @keyframes animacionPeliculasout {
     0% {
