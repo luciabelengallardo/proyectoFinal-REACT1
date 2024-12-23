@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 function CarouselCustom({ titulo, items }) {
   const [peliculas, setPeliculas] = useState([]);
   const [cantItems, setCantItems] = useState(window.innerWidth > 768 ? 5 : 3);
-  const [w, setW] = useState();
 
   const navigate = useNavigate();
 
@@ -29,22 +28,20 @@ function CarouselCustom({ titulo, items }) {
   };
 
   useEffect(() => {
-    window.addEventListener('resize', (e)=>{
-        
-        setCantItems(window.innerWidth > 768 ? 5 : 3);
-        setPeliculas(
-            agruparItems(
-              items.filter((i) => i.disponible),
-              window.innerWidth > 768 ? 5 : 3
-            )
-          );
-
-  });
+    window.addEventListener("resize", (e) => {
+      setCantItems(window.innerWidth > 768 ? 5 : 3);
+      setPeliculas(
+        agruparItems(
+          items.filter((i) => i.disponible),
+          window.innerWidth > 768 ? 5 : 3
+        )
+      );
+    });
     fetchItems();
   }, []);
   return (
     <div className="carouselCustom container">
-      <h1>{titulo}</h1>
+      <h1 className="my-4">{titulo}</h1>
 
       <Carousel interval={null}>
         {peliculas.map((listado, index) => {

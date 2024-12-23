@@ -54,7 +54,7 @@ function Footer() {
         {/* <!-- Copyright --> */}
         <div className="col-12 d-flex align-content-center justify-content-center footer_copyright">
           © 2023 Copyright:
-          <a href=""> REACT1.com</a>
+          <a href=""> MovieNight.com</a>
         </div>
       </div>
     </footer>
