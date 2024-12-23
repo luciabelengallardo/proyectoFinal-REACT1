@@ -1,20 +1,17 @@
 import React from "react";
+import error404 from "../img/error404.png";
 
 const Error404 = () => {
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-gray-100">
-      <div className="relative w-full max-w-2xl mx-4">
-        <img
-          src="../img/error404.png"
-          alt="Error 404 background"
-          className="w-full h-auto rounded-lg shadow-lg object-cover"
-        />
+    <div className="d-flex text-center align-items-center justify-content-center">
+      <div className=" w-100 mx-4">
+        <img src={error404} alt="Error 404 background" className="w-50 " />
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="bg-black bg-opacity-50 px-8 py-6 rounded-lg backdrop-blur-sm">
-            <h1 className="text-4xl font-bold text-white text-center mb-2">
-              ¡Ups!
-            </h1>
-            <p className="text-2xl text-white text-center">Ocurrió un error</p>
+          <div className=" px-8 py-6  ">
+            <h1 className=" font-bold text-white text-center mb-2">¡Oops!</h1>
+            <p className=" text-white text-center">
+              Parece que ocurrió un error
+            </p>
           </div>
         </div>
       </div>
