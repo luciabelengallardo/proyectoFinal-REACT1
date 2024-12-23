@@ -47,6 +47,14 @@ function NavBar({ usuario, setUsuario }) {
                     Series
                   </Link>
                 </li>
+                {usuario && usuario.rol == "admin" && (
+                  <li className="nav-item">
+                    <Link className="nav-link text-white" to="/Admin">
+                      <i className="bi bi-tv"></i>
+                      Admin
+                    </Link>
+                  </li>
+                )}
               </ul>
             </div>
             <div className="nav-item btn btn-outline-secondary btn-iniciar-sesion">
@@ -67,7 +75,7 @@ function NavBar({ usuario, setUsuario }) {
         <div className="">
           {usuario && (
             <div className="d-flex">
-              <span className="text-white username">{usuario}</span>
+              <span className="text-white username">{usuario.email}</span>
               <i class="bi bi-person-circle text-white profile-circle"></i>
             </div>
           )}

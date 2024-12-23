@@ -1,4 +1,4 @@
-// import "./App.css";
+import "./App.css";
 import "./css/home.css";
 import "./css/footer.css";
 import NavBar from "./components/NavBar";
@@ -31,8 +31,20 @@ function App() {
                 <LoginScreen usuario={usuario} setUsuario={setUsuario} />
               }
             />
-            <Route path="/Admin" element={<AdminMovies />} />
-            <Route path="/Movies/:id" element={<MoviesCategory />} />
+            {usuario && usuario.rol == "admin" && (
+              <Route path="/Admin" element={<AdminMovies />} />
+            )}
+
+            <Route
+              path="/Movies/:id"
+              element={
+                usuario ? (
+                  <MoviesCategory />
+                ) : (
+                  <LoginScreen usuario={usuario} setUsuario={setUsuario} />
+                )
+              }
+            />
           </Routes>
         </main>
 
