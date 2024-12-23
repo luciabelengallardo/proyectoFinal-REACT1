@@ -22,8 +22,8 @@ function Footer() {
                 </Link>
               </li>
               <li className="ps-2 ps-md-0 ">
-                <Link className="text-white footer-link" to="/ayuda">
-                  Ayuda
+                <Link className="text-white footer-link" to="/Contacto">
+                  Contacto
                 </Link>
               </li>
             </ul>

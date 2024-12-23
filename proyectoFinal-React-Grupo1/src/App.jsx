@@ -33,7 +33,7 @@ function App() {
                 <LoginScreen usuario={usuario} setUsuario={setUsuario} />
               }
             />
-            <Route path="/contacto" element={<ContactoScreen />} />
+            <Route path="/Contacto" element={<ContactoScreen />} />
 
             <Route path="/register" element={<RegisterScreen />} />
             {usuario && usuario.rol == "admin" && (

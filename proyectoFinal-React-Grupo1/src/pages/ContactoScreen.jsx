@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-
-function ContactoScreen({ }) {
+function ContactoScreen() {
   const navigate = useNavigate();
 
   const [formValues, setFormValues] = useState({
@@ -11,14 +10,14 @@ function ContactoScreen({ }) {
     consulta: "",
   });
 
-  useEffect (()=>{
-    const listaContacto = JSON.parse(localStorage.getItem("lista-contacto")) ||[]
+  useEffect(() => {
+    const listaContacto =
+      JSON.parse(localStorage.getItem("lista-contacto")) || [];
+  }, []);
 
-  },[])
   const handleChange = (e) => {
     setFormValues({
       ...formValues,
-
       [e.target.name]: e.target.value,
     });
   };
@@ -26,14 +25,29 @@ function ContactoScreen({ }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-
-    
-    //? validar que se completen los campos
-    if (!formValues.email || formValues.nombreyapellido || formValues.consulta ) {
-      alert("Debe completar los campos obligatorios!");
+    if (
+      !formValues.nombreyapellido ||
+      !formValues.email ||
+      !formValues.consulta
+    ) {
+      alert("Debe completar todos los campos obligatorios!");
+      return;
+    } else {
+      alert("Su consulta fue enviada con exito!");
     }
 
+    const listaContacto =
+      JSON.parse(localStorage.getItem("lista-contacto")) || [];
+    listaContacto.push(formValues);
+    localStorage.setItem("lista-contacto", JSON.stringify(listaContacto));
 
+    setFormValues({
+      nombreyapellido: "",
+      email: "",
+      consulta: "",
+    });
+
+    navigate("/Contacto");
   };
 
   return (
@@ -43,14 +57,17 @@ function ContactoScreen({ }) {
           <h2 className="text-center text-black mb-4">Contactanos</h2>
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
-              <label htmlFor="" className="form-label text-black">
+              <label
+                htmlFor="nombreyapellido"
+                className="form-label text-black"
+              >
                 Nombre y Apellido
               </label>
               <input
                 type="text"
                 className="form-control"
-                id="nombre"
-                name="nombre"
+                id="nombreyapellido"
+                name="nombreyapellido"
                 placeholder="Juan Roman"
                 value={formValues.nombreyapellido}
                 onChange={handleChange}
@@ -71,20 +88,18 @@ function ContactoScreen({ }) {
               />
             </div>
             <div className="mb-3">
-              <label htmlFor="email" className="form-label text-black">
+              <label htmlFor="consulta" className="form-label text-black">
                 Consulta
               </label>
-              <input
-                type="text"
+              <textarea
                 className="form-control"
-                id="nombre"
-                name="nombre"
+                id="consulta"
+                name="consulta"
                 placeholder="Escriba su consulta aquí"
                 value={formValues.consulta}
                 onChange={handleChange}
-              />
+              ></textarea>
             </div>
-            
 
             <div className="mb-3">
               <button type="submit" className="btn btn-secondary w-100">
@@ -93,7 +108,6 @@ function ContactoScreen({ }) {
             </div>
           </form>
         </div>
-
       </div>
     </>
   );
