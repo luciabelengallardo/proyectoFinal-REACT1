@@ -90,7 +90,7 @@ function RegisterScreen({ usuario, setUsuario }) {
                 id="password"
                 name="password"
                 placeholder="********"
-                 required minlength="6" maxlength="20"
+                minlength="6" maxlength="20"
                 value={formValues.password}
                 onChange={handleChange}
               />
