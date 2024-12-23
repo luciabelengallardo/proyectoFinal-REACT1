@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Movienight } from "../data/Movienight";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const AdminMovies = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [editingMovie, setEditingMovie] = useState(null);
@@ -22,12 +24,15 @@ const AdminMovies = () => {
   useEffect(() => {
     const storedMovies = localStorage.getItem("movies");
     if (storedMovies) {
-      setMovies(JSON.parse(storedMovies));
+      setMovies(Movienight);
     } else {
       setMovies(Movienight);
       localStorage.setItem("movies", JSON.stringify(Movienight));
     }
   }, []);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
@@ -48,6 +53,7 @@ const AdminMovies = () => {
     setMovies(updatedMovies);
     localStorage.setItem("movies", JSON.stringify(updatedMovies));
     setEditingMovie(null);
+    navigate("/admin");
   };
 
   const handleDelete = (id) => {
@@ -65,7 +71,7 @@ const AdminMovies = () => {
   };
 
   const handleAddMovie = () => {
-    const newId = Date.now();
+    const newId = Movienight.length + 1;
     const movieToAdd = {
       ...newMovie,
       id: newId,
@@ -87,6 +93,22 @@ const AdminMovies = () => {
     setShowNewMovieForm(false);
     navigate("/admin");
   };
+  const handleCancel = () => {
+    setNewMovie({
+      title: "",
+      description: "",
+      disponible: true,
+      genre: "",
+      director: "",
+      year: "",
+      image: "",
+      trailer: "",
+    });
+    setShowNewMovieForm(false);
+    navigate("/admin");
+  };
+
+  console.log(filteredMovies);
 
   return (
     <>
@@ -94,6 +116,7 @@ const AdminMovies = () => {
         <div className="d-flex mx-2 my-3 justify-content-space-between">
           <div className="mb-6">
             <button
+              onClick={openModal}
               type="button"
               className="btn btn-warning"
               data-bs-toggle="modal"
@@ -127,7 +150,7 @@ const AdminMovies = () => {
               </tr>
             </thead>
             <tbody>
-              {filteredMovies.flat().map((movie) => (
+              {filteredMovies.map((movie) => (
                 <tr key={movie.id} className="border-t">
                   {editingMovie && editingMovie.id === movie.id ? (
                     <>
@@ -191,7 +214,7 @@ const AdminMovies = () => {
                     </>
                   ) : (
                     <>
-                      <td className="p-4">{movie.id}</td>
+                      <td className="p-4">{movie.rank}</td>
                       <td className="p-4">{movie.title}</td>
                       <td className="p-4">
                         {Array.isArray(movie.genre)
@@ -233,82 +256,86 @@ const AdminMovies = () => {
             </tbody>
           </table>
         </div>
-        <div
-          className="modal fade"
-          id="exampleModal"
-          tabindex="-1"
-          aria-labelledby="exampleModalLabel"
-          aria-hidden="true"
-        >
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <div className="modal-header">
-                <button
-                  type="button"
-                  className="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                ></button>
-              </div>
-              <div className="modal-body">
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-                  <div className="bg-white p-6 rounded-lg w-96">
-                    <h2 className="text-xl font-bold mb-4">
-                      Agregar Nueva Película
-                    </h2>
-                    <div className="">
-                      <input
-                        type="text"
-                        placeholder="Título"
-                        className="my-2 p-2 border rounded"
-                        value={newMovie.title}
-                        onChange={(e) =>
-                          setNewMovie({ ...newMovie, title: e.target.value })
-                        }
-                      />
-                      <input
-                        type="text"
-                        placeholder="Descripción"
-                        className="my-2 mx-2 p-2 border rounded"
-                        value={newMovie.description}
-                        onChange={(e) =>
-                          setNewMovie({
-                            ...newMovie,
-                            description: e.target.value,
-                          })
-                        }
-                      />
-                      <input
-                        type="text"
-                        placeholder="Género"
-                        className="my-2 p-2 border rounded"
-                        value={newMovie.genre}
-                        onChange={(e) =>
-                          setNewMovie({ ...newMovie, genre: e.target.value })
-                        }
-                      />
-                      <input
-                        type="number"
-                        placeholder="Año"
-                        className="mx-2 p-2 border rounded"
-                        value={newMovie.year}
-                        onChange={(e) =>
-                          setNewMovie({ ...newMovie, year: e.target.value })
-                        }
-                      />
-                      <div className="my-3">
-                        <button
-                          onClick={handleAddMovie}
-                          className=" px-4 py-2 rounded"
-                        >
-                          💾 Guardar
-                        </button>
-                        <button
-                          onClick={() => setShowNewMovieForm(false)}
-                          className="mx-2 px-4 py-2 rounded"
-                        >
-                          ❌ Cancelar
-                        </button>
+        {isModalOpen && (
+          <div
+            className="modal fade"
+            id="exampleModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div className="modal-dialog">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <button
+                    type="button"
+                    className="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+
+                <div className="modal-body">
+                  <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                    <div className="bg-white p-6 rounded-lg w-96">
+                      <h2 className="text-xl font-bold mb-4">
+                        Agregar Nueva Película
+                      </h2>
+                      <div className="">
+                        <input
+                          type="text"
+                          placeholder="Título"
+                          className="my-2 p-2 border rounded"
+                          value={newMovie.title}
+                          onChange={(e) =>
+                            setNewMovie({ ...newMovie, title: e.target.value })
+                          }
+                        />
+                        <input
+                          type="text"
+                          placeholder="Descripción"
+                          className="my-2 mx-2 p-2 border rounded"
+                          value={newMovie.description}
+                          onChange={(e) =>
+                            setNewMovie({
+                              ...newMovie,
+                              description: e.target.value,
+                            })
+                          }
+                        />
+                        <input
+                          type="text"
+                          placeholder="Género"
+                          className="my-2 p-2 border rounded"
+                          value={newMovie.genre}
+                          onChange={(e) =>
+                            setNewMovie({ ...newMovie, genre: e.target.value })
+                          }
+                        />
+                        <input
+                          type="number"
+                          placeholder="Año"
+                          className="mx-2 p-2 border rounded"
+                          value={newMovie.year}
+                          onChange={(e) =>
+                            setNewMovie({ ...newMovie, year: e.target.value })
+                          }
+                        />
+                        <div className="my-3">
+                          <button
+                            onClick={handleAddMovie}
+                            className=" px-4 py-2 rounded"
+                          >
+                            💾 Guardar
+                          </button>
+
+                          <button
+                            onClick={handleCancel}
+                            className="mx-2 px-4 py-2 rounded"
+                          >
+                            ❌ Cancelar
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -316,7 +343,7 @@ const AdminMovies = () => {
               </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
     </>
   );

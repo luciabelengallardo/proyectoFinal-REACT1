@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Carousel from "../components/Carousel";
 import { Movienight } from "../data/Movienight";
 import { Link } from "react-router-dom";
 
 function HomeScreen() {
-  const [peliculas, setPeliculas] = useState(Movienight);
+  const array1 = Movienight.slice(0, 20);
+  const array2 = Movienight.slice(20, 40);
+  const array3 = Movienight.slice(40, 60);
+  const array4 = Movienight.slice(60, 80);
 
   return (
     <>
@@ -115,10 +118,10 @@ function HomeScreen() {
         </Link>
       </div>
 
-      <Carousel titulo={"Comedia"} items={peliculas[0]} />
-      <Carousel titulo={"Accion"} items={peliculas[1]} />
-      <Carousel titulo={"Drama"} items={peliculas[2]} />
-      <Carousel titulo={"Series"} items={peliculas[3]} />
+      <Carousel titulo={"Comedia"} items={array1} />
+      <Carousel titulo={"Accion"} items={array2} />
+      <Carousel titulo={"Drama"} items={array3} />
+      <Carousel titulo={"Series"} items={array4} />
     </>
   );
 }
