@@ -12,6 +12,7 @@ import MoviesCategory from "./pages/MoviesCategory";
 import AdminMovies from "./pages/Adminmovies";
 import { useState } from "react";
 import RegisterScreen from "./pages/RegisterScreen";
+import ContactoScreen from "./pages/ContactoScreen";
 
 function App() {
   const [usuario, setUsuario] = useState();
@@ -32,7 +33,9 @@ function App() {
                 <LoginScreen usuario={usuario} setUsuario={setUsuario} />
               }
             />
-            <Route path="/register" element={<RegisterScreen/>}/>
+            <Route path="/contacto" element={<ContactoScreen />} />
+
+            <Route path="/register" element={<RegisterScreen />} />
             {usuario && usuario.rol == "admin" && (
               <Route path="/Admin" element={<AdminMovies />} />
             )}
