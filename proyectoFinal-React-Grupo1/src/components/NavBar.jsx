@@ -76,7 +76,7 @@ function NavBar({ usuario, setUsuario }) {
           {usuario && (
             <div className="d-flex">
               <span className="text-white username">{usuario.email}</span>
-              <i class="bi bi-person-circle text-white profile-circle"></i>
+              <i className="bi bi-person-circle text-white profile-circle"></i>
             </div>
           )}
         </div>

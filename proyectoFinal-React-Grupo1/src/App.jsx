@@ -31,7 +31,7 @@ function App() {
                 <LoginScreen usuario={usuario} setUsuario={setUsuario} />
               }
             />
-            {usuario && usuario.rol == "admin" && (
+            { (
               <Route path="/Admin" element={<AdminMovies />} />
             )}
 
