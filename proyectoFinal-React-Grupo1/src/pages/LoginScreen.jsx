@@ -1,9 +1,17 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../css/login.css";
 
-function LoginScreen() {
+const users = [
+  { email: "lucia@lucia.com", password: "123456", rol: "user" },
+  { email: "gonzalo@gonzalo.com", password: "123456", rol: "user" },
+  { email: "nacho@nacho.com", password: "123456", rol: "user" },
+  { email: "admin@admin.com", password: "123456", rol: "admin" },
+];
+
+function LoginScreen({ usuario, setUsuario }) {
   const navigate = useNavigate();
+  console.log(usuario);
 
   const [formValues, setFormValues] = useState({
     email: "",
@@ -23,23 +31,17 @@ function LoginScreen() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    //USUARIO REGISTRADO DE EJEMPLO - DB
-    const user = {
-      email: "lucia@lucia.com",
-      password: "123456",
-    };
+    let u = users.find((i) => i.email == formValues.email);
 
     //? validar que se completen los campos
     if (!formValues.email || !formValues.password) {
       alert("Debe completar los campos obligatorios!");
     }
 
-    if (
-      formValues.email === user.email &&
-      formValues.password === user.password
-    ) {
-      // alert("Datos correctos");
-      navigate("/");
+    if (u && formValues.password === u.password) {
+      u.rol == "admin" ? navigate("/admin") : navigate("/");
+      localStorage.setItem("email", u.email);
+      setUsuario(u);
     } else {
       alert("Email o contraseña incorrecto!");
     }
@@ -86,6 +88,12 @@ function LoginScreen() {
             </div>
           </form>
         </div>
+        <p className="text-secondary pt-3">
+          Nuevo en Movie Night?{" "}
+          <Link to="/registro">
+            <strong>Registrate Ahora</strong>
+          </Link>
+        </p>
       </div>
     </>
   );

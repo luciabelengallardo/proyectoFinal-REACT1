@@ -1,6 +1,82 @@
 .carouselCustom{
+margin-bottom: 40px;
+    & img{
+        animation: animacionPeliculasout 0.5s;
+
+        width: calc((100% - 120px)/5)!important;
+        aspect-ratio: 9/16;
+        margin-right: 30px;
+        border-radius: 10px;
+        &:hover {
+            transform: scale(1.1);
+            border: solid 2px #fff;
+            cursor: pointer;
+            animation: animacionPeliculasin 0.5s;
+          }
+        &:last-of-type{
+            margin-right: 0;
+        }
+    }
     & h1{
         color: #fff;
         font-size: 25px;
     }
+    & .carousel-control-next{
+        width: 30px;
+        position: absolute;
+        right: 0;
+        top: 0;
+
+    }
+    & .carousel-control-prev{
+        width: 30px;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    & .carousel-inner{
+        overflow: initial;
+    }
+
+    & .carousel-item{
+        padding: 0;
+        height: fit-content;
+
+    }
+
+    & .carousel-indicators{
+display: none;
+    }
+    
+    & .carousel{
+        padding: 0 30px;
+        position: relative;
+    }
+
 }
+
+@media screen and (max-width: 768px) {
+
+  .carouselCustom img{
+margin-right: 10px;
+    width: calc((100% - 30px)/3)!important;
+  }}
+
+@keyframes animacionPeliculasout {
+    0% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes animacionPeliculasin {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.1);
+    }
+  }

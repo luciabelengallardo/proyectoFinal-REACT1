@@ -1,27 +1,85 @@
-import React from "react";
+import React, { useState } from "react";
+import { useParams, useNavigate, Link } from "react-router-dom";
+import { Movienight } from "../data/Movienight";
+import "../css/moviescategory.css";
 
-function MoviesCategory() {
+const MoviesCategory = () => {
+  const [close, setClose] = useState(true);
+
+  const { id } = useParams();
+  const movie = Movienight.flat().find((movie) => movie.id === id);
+  console.log(Movienight);
+  const navigate = useNavigate();
+
+  if (!movie) {
+    return <div>Movie not found</div>;
+  }
+
   return (
     <>
-      <div className="text-white">
-        <div className="container">
-          <img src="" alt="" />
+      {!close && (
+        <div className="modal-reproduccion">
+          <iframe src={movie.trailer} controls="controls" />
+          <button
+            onClick={() => {
+              setClose(true);
+            }}
+          >
+            X
+          </button>
         </div>
-        <div>
-          <button>PLAY</button>
-          <button>TRAILER</button>
-          <button>+</button>
+      )}
+      <div className="movie-container">
+        <div
+          className="bg-img"
+          style={{ backgroundImage: `url(${movie.image})` }}
+        >
+          <div className="gradient"></div>
+          <div className="content">
+            <div className="title-logo">
+              <h2>{movie.title}</h2>
+            </div>
+
+            <div className="movie-info">
+              <div className="button-container">
+                <Link to="/play">
+                  <button className="play-button">
+                    <span className="mx-1">▶</span> PLAY
+                  </button>
+                </Link>
+
+                <Link to="">
+                  <button
+                    className="trailer-button"
+                    onClick={() => {
+                      setClose(false);
+                    }}
+                  >
+                    <span className="mx-1">▶</span> TRAILER
+                  </button>
+                </Link>
+                <Link to="/favorites">
+                  <button className="add-button">+</button>
+                </Link>
+              </div>
+
+              <div className="movie-details m-2">
+                <span>{movie.year}</span>
+                <span className="m-1">•</span>
+                <span>
+                  {Array.isArray(movie.genre)
+                    ? movie.genre.join(", ")
+                    : movie.genre}
+                </span>
+              </div>
+
+              <p className="movie-description mt-2">{movie.description}</p>
+            </div>
+          </div>
         </div>
-        <p>1999 - Comedia, Familia, Aventura</p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas fugiat
-          incidunt veritatis obcaecati corrupti dolorem facilis quasi quisquam
-          delectus
-        </p>
-        <button>Volver</button>
       </div>
     </>
   );
-}
+};
 
 export default MoviesCategory;

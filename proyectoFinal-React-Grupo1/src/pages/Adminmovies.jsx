@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Movienight } from "./data/Movienight";
+import { Movienight } from "../data/Movienight";
 
 const AdminMovies = () => {
   const [movies, setMovies] = useState([]);
