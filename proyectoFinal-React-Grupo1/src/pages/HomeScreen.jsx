@@ -15,28 +15,28 @@ function HomeScreen() {
           <div className="carousel-item active">
             <img
               className="d-block w-100"
-              src="/src/img/carousel1.jpg"
+              src="https://mkwiecien00.github.io/disney-plus-clone/assets/imgslide-1-ZuWvtr9m.jpg"
               alt="Película 1"
             />
           </div>
           <div className="carousel-item">
             <img
               className="d-block w-100"
-              src="/src/img/carousel2.jpg"
+              src="https://mkwiecien00.github.io/disney-plus-clone/assets/imgslide-2-53IU4WjP.jpg"
               alt="Película 2"
             />
           </div>
           <div className="carousel-item">
             <img
               className="d-block w-100"
-              src="/src/img/carousel3.jpg"
+              src="https://mkwiecien00.github.io/disney-plus-clone/assets/imgslide-4-nvIPWDMu.jpg"
               alt="Película 3"
             />
           </div>
           <div className="carousel-item">
             <img
               className="d-block w-100"
-              src="/src/img/carousel4.jpg"
+              src="https://mkwiecien00.github.io/disney-plus-clone/assets/imgslide-3-dNgqt1xN.jpg"
               alt="Película 4"
             />
           </div>
