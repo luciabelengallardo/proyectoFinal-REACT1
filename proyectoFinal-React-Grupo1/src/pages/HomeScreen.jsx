@@ -46,13 +46,11 @@ function HomeScreen() {
                 />
               </div>
             </div>
-            {/* Controles de navegación del carrusel */}
           </div>
         </Link>
         <Link to="/error404">
           <div className="container  mt-4" id="categorias">
             <div className="row">
-              {/* Card 1 */}
               <div className="col-2">
                 <div className="card">
                   <img
@@ -63,7 +61,6 @@ function HomeScreen() {
                 </div>
               </div>
 
-              {/* Card 2 */}
               <div className="col-2">
                 <div className="card">
                   <img
@@ -74,7 +71,6 @@ function HomeScreen() {
                 </div>
               </div>
 
-              {/* Card 3 */}
               <div className="col-2">
                 <div className="card">
                   <img
@@ -85,7 +81,6 @@ function HomeScreen() {
                 </div>
               </div>
 
-              {/* Card 4 */}
               <div className="col-2">
                 <div className="card">
                   <img
@@ -96,7 +91,6 @@ function HomeScreen() {
                 </div>
               </div>
 
-              {/* Card 5 */}
               <div className="col-2">
                 <div className="card">
                   <img
@@ -107,7 +101,6 @@ function HomeScreen() {
                 </div>
               </div>
 
-              {/* Card 6 */}
               <div className="col-2">
                 <div className="card">
                   <img

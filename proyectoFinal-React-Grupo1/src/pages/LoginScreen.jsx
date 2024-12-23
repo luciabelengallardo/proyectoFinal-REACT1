@@ -11,13 +11,11 @@ const users = [
 
 function LoginScreen({ usuario, setUsuario }) {
   const navigate = useNavigate();
-  console.log(usuario);
 
   const [formValues, setFormValues] = useState({
     email: "",
     password: "",
   });
-  console.log(formValues);
   useEffect(() => {
     const listaRegistro =
       JSON.parse(localStorage.getItem("lista-registro")) || [];
@@ -25,7 +23,6 @@ function LoginScreen({ usuario, setUsuario }) {
   }, []);
 
   const handleChange = (e) => {
-    // console.log(e.target.value);
     setFormValues({
       ...formValues,
 
@@ -38,7 +35,6 @@ function LoginScreen({ usuario, setUsuario }) {
 
     let u = users.find((i) => i.email == formValues.email);
 
-    //? validar que se completen los campos
     if (!formValues.email || !formValues.password) {
       alert("Debe completar los campos obligatorios!");
     }

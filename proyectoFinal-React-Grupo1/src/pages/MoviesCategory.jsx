@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { Movienight } from "../data/Movienight";
 import "../css/moviescategory.css";
 
@@ -8,8 +8,6 @@ const MoviesCategory = () => {
 
   const { id } = useParams();
   const movie = Movienight.flat().find((movie) => movie.id === id);
-  console.log(Movienight);
-  const navigate = useNavigate();
 
   if (!movie) {
     return <div>Movie not found</div>;

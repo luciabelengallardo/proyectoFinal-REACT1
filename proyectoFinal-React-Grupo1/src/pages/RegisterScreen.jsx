@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import "../css/register.css";
+import { useNavigate } from "react-router-dom";
 
 const users = [
   { email: "lucia@lucia.com", password: "123456", rol: "user" },
@@ -15,14 +14,14 @@ function RegisterScreen({ usuario, setUsuario }) {
   const [formValues, setFormValues] = useState({
     email: "",
     password: "",
-    confirmpassword:"",
+    confirmpassword: "",
   });
 
-  useEffect (()=>{
-    const listaRegistro = JSON.parse(localStorage.getItem("lista-registro")) ||[]
-    users.push(...listaRegistro)
-
-  },[])
+  useEffect(() => {
+    const listaRegistro =
+      JSON.parse(localStorage.getItem("lista-registro")) || [];
+    users.push(...listaRegistro);
+  }, []);
   const handleChange = (e) => {
     setFormValues({
       ...formValues,
@@ -36,27 +35,28 @@ function RegisterScreen({ usuario, setUsuario }) {
 
     let u = users.find((i) => i.email == formValues.email);
 
-    
-    //? validar que se completen los campos
-    if (!formValues.email || !formValues.password || !formValues.confirmpassword  ) {
+    if (
+      !formValues.email ||
+      !formValues.password ||
+      !formValues.confirmpassword
+    ) {
       alert("Debe completar los campos obligatorios!");
-    }
-    else if(u){
-        alert("El mail ingresado ya existe!")
-    }
-    else if(formValues.password!=formValues.confirmpassword){
-        alert("Las contraseñas ingresadas no coinciden!")
-    }
-
-     else {
-        const listaRegistro = JSON.parse(localStorage.getItem("lista-registro")) ||[]
-        const nuevo= {   email: formValues.email, password: formValues.password, rol: "user" }
-        listaRegistro.push(nuevo)
-        localStorage.setItem("lista-registro", JSON.stringify(listaRegistro) )
-        alert("Fuiste registrado con exito! Se te enviara a la pagina de login.")
-        navigate("/login")
-        
-
+    } else if (u) {
+      alert("El mail ingresado ya existe!");
+    } else if (formValues.password != formValues.confirmpassword) {
+      alert("Las contraseñas ingresadas no coinciden!");
+    } else {
+      const listaRegistro =
+        JSON.parse(localStorage.getItem("lista-registro")) || [];
+      const nuevo = {
+        email: formValues.email,
+        password: formValues.password,
+        rol: "user",
+      };
+      listaRegistro.push(nuevo);
+      localStorage.setItem("lista-registro", JSON.stringify(listaRegistro));
+      alert("Fuiste registrado con exito! Se te enviara a la pagina de login.");
+      navigate("/login");
     }
   };
 
@@ -90,7 +90,9 @@ function RegisterScreen({ usuario, setUsuario }) {
                 id="password"
                 name="password"
                 placeholder="********"
-                 required minlength="6" maxlength="20"
+                required
+                minlength="6"
+                maxlength="20"
                 value={formValues.password}
                 onChange={handleChange}
               />
@@ -116,7 +118,6 @@ function RegisterScreen({ usuario, setUsuario }) {
             </div>
           </form>
         </div>
-
       </div>
     </>
   );
