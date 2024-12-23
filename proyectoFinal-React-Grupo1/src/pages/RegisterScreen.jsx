@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "../css/login.css";
+import "../css/register.css";
 
 const users = [
   { email: "lucia@lucia.com", password: "123456", rol: "user" },
@@ -9,23 +9,21 @@ const users = [
   { email: "admin@admin.com", password: "123456", rol: "admin" },
 ];
 
-function LoginScreen({ usuario, setUsuario }) {
+function RegisterScreen({ usuario, setUsuario }) {
   const navigate = useNavigate();
-  console.log(usuario);
 
   const [formValues, setFormValues] = useState({
     email: "",
     password: "",
+    confirmpassword:"",
   });
-  console.log(formValues);
-    useEffect (()=>{
-      const listaRegistro = JSON.parse(localStorage.getItem("lista-registro")) ||[]
-      users.push(...listaRegistro)
-  
-    },[])
 
+  useEffect (()=>{
+    const listaRegistro = JSON.parse(localStorage.getItem("lista-registro")) ||[]
+    users.push(...listaRegistro)
+
+  },[])
   const handleChange = (e) => {
-    // console.log(e.target.value);
     setFormValues({
       ...formValues,
 
@@ -38,17 +36,27 @@ function LoginScreen({ usuario, setUsuario }) {
 
     let u = users.find((i) => i.email == formValues.email);
 
+    
     //? validar que se completen los campos
-    if (!formValues.email || !formValues.password) {
+    if (!formValues.email || !formValues.password || !formValues.confirmpassword  ) {
       alert("Debe completar los campos obligatorios!");
     }
+    else if(u){
+        alert("El mail ingresado ya existe!")
+    }
+    else if(formValues.password!=formValues.confirmpassword){
+        alert("Las contraseñas ingresadas no coinciden!")
+    }
 
-    if (u && formValues.password === u.password) {
-      u.rol == "admin" ? navigate("/admin") : navigate("/");
-      localStorage.setItem("email", u.email);
-      setUsuario(u);
-    } else {
-      alert("Email o contraseña incorrecto!");
+     else {
+        const listaRegistro = JSON.parse(localStorage.getItem("lista-registro")) ||[]
+        const nuevo= {   email: formValues.email, password: formValues.password, rol: "user" }
+        listaRegistro.push(nuevo)
+        localStorage.setItem("lista-registro", JSON.stringify(listaRegistro) )
+        alert("Fuiste registrado con exito! Se te enviara a la pagina de login.")
+        navigate("/login")
+        
+
     }
   };
 
@@ -56,7 +64,7 @@ function LoginScreen({ usuario, setUsuario }) {
     <>
       <div className="login-container container d-flex justify-content-center align-items-center">
         <div className="login-form bg-light p-4 rounded shadow">
-          <h2 className="text-center text-black mb-4">Iniciar Sesión</h2>
+          <h2 className="text-center text-black mb-4">Registrarse</h2>
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
               <label htmlFor="email" className="form-label text-black">
@@ -87,21 +95,30 @@ function LoginScreen({ usuario, setUsuario }) {
               />
             </div>
             <div className="mb-3">
+              <label htmlFor="password" className="form-label text-black">
+                Confirmar Contraseña
+              </label>
+              <input
+                type="password"
+                className="form-control"
+                id="confirmpassword"
+                name="confirmpassword"
+                placeholder="********"
+                value={formValues.confirmpassword}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="mb-3">
               <button type="submit" className="btn btn-secondary w-100">
-                Iniciar Sesión
+                Registrarse
               </button>
             </div>
           </form>
         </div>
-        <p className="text-secondary pt-3">
-          Nuevo en Movie Night?{" "}
-          <Link to="/register">
-            <strong>Registrate Ahora</strong>
-          </Link>
-        </p>
+
       </div>
     </>
   );
 }
 
-export default LoginScreen;
+export default RegisterScreen;
