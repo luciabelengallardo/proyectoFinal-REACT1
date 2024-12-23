@@ -18,11 +18,11 @@ function LoginScreen({ usuario, setUsuario }) {
     password: "",
   });
   console.log(formValues);
-    useEffect (()=>{
-      const listaRegistro = JSON.parse(localStorage.getItem("lista-registro")) ||[]
-      users.push(...listaRegistro)
-  
-    },[])
+  useEffect(() => {
+    const listaRegistro =
+      JSON.parse(localStorage.getItem("lista-registro")) || [];
+    users.push(...listaRegistro);
+  }, []);
 
   const handleChange = (e) => {
     // console.log(e.target.value);
