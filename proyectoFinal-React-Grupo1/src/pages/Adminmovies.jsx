@@ -131,7 +131,7 @@ const AdminMovies = () => {
             </tr>
           </thead>
           <tbody>
-            {filteredMovies.map((movie) => (
+            {filteredMovies.flat().map((movie) => (
               <tr key={movie.id} className="border-t">
                 {editingMovie && editingMovie.id === movie.id ? (
                   <>
