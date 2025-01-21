@@ -84,6 +84,8 @@ function ContactoScreen({ }) {
                 id="nombre"
                 name="nombre"
                 placeholder="Escriba su consulta aquí"
+                minlength="30"
+                maxlength="300"
                 value={formValues.consulta}
                 onChange={handleChange}
               />
