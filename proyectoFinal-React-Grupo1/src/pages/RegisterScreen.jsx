@@ -106,6 +106,8 @@ function RegisterScreen({ usuario, setUsuario }) {
                 id="confirmpassword"
                 name="confirmpassword"
                 placeholder="********"
+                minlength="6"
+                maxlength="20"
                 value={formValues.confirmpassword}
                 onChange={handleChange}
               />
