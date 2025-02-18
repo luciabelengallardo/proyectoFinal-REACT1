@@ -76,6 +76,8 @@ function RegisterScreen({ usuario, setUsuario }) {
                 id="email"
                 name="email"
                 placeholder="ejemplo@gmail.com"
+                 minlength="4"
+                maxlength="30"
                 value={formValues.email}
                 onChange={handleChange}
               />
@@ -90,7 +92,7 @@ function RegisterScreen({ usuario, setUsuario }) {
                 id="password"
                 name="password"
                 placeholder="********"
-                minlength="6"
+                minlength="8"
                 maxlength="20"
                 value={formValues.password}
                 onChange={handleChange}
@@ -106,7 +108,7 @@ function RegisterScreen({ usuario, setUsuario }) {
                 id="confirmpassword"
                 name="confirmpassword"
                 placeholder="********"
-                minlength="6"
+                minlength="8"
                 maxlength="20"
                 value={formValues.confirmpassword}
                 onChange={handleChange}
