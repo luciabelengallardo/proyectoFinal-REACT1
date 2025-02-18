@@ -64,6 +64,8 @@ function LoginScreen({ usuario, setUsuario }) {
                 id="email"
                 name="email"
                 placeholder="ejemplo@gmail.com"
+                 minlength="8"
+                maxlength="30"
                 value={formValues.email}
                 onChange={handleChange}
               />
@@ -78,6 +80,8 @@ function LoginScreen({ usuario, setUsuario }) {
                 id="password"
                 name="password"
                 placeholder="********"
+                 minlength="8"
+                maxlength="30"
                 value={formValues.password}
                 onChange={handleChange}
               />
