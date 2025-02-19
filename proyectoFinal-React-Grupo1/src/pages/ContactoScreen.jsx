@@ -100,6 +100,8 @@ function ContactoScreen() {
                 id="consulta"
                 name="consulta"
                 placeholder="Escriba su consulta aquí"
+                  minlength="30"
+                maxlength="500"
                 value={formValues.consulta}
                 onChange={handleChange}
               ></textarea>
