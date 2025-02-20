@@ -84,8 +84,6 @@ function ContactoScreen() {
                 className="form-control"
                 id="email"
                 name="email"
-                minlength="6"
-                maxlength="60"
                 placeholder="ejemplo@gmail.com"
                 minlength="8"
                 maxlength="30"
