@@ -69,8 +69,6 @@ function ContactoScreen() {
                 id="nombreyapellido"
                 name="nombreyapellido"
                 placeholder="Juan Roman"
-                minlength="4"
-                maxlength="30" 
                 value={formValues.nombreyapellido}
                 onChange={handleChange}
               />
@@ -84,8 +82,6 @@ function ContactoScreen() {
                 className="form-control"
                 id="email"
                 name="email"
-                minlength="6"
-                maxlength="60"
                 placeholder="ejemplo@gmail.com"
                 value={formValues.email}
                 onChange={handleChange}
@@ -100,8 +96,6 @@ function ContactoScreen() {
                 id="consulta"
                 name="consulta"
                 placeholder="Escriba su consulta aquí"
-                minlength="30"
-                maxlength="300"
                 value={formValues.consulta}
                 onChange={handleChange}
               ></textarea>
