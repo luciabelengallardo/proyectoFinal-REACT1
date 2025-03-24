@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { Movienight } from "../data/Movienight";
 import "../css/moviescategory.css";
 import { MovieContext } from "../context/MovieContext";
 

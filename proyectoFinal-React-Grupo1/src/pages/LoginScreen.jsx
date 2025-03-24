@@ -9,7 +9,7 @@ const users = [
   { email: "admin@admin.com", password: "123456", rol: "admin" },
 ];
 
-function LoginScreen({ usuario, setUsuario }) {
+function LoginScreen({ setUsuario }) {
   const navigate = useNavigate();
 
   const [formValues, setFormValues] = useState({

@@ -3,7 +3,7 @@ import { MovieContext } from "../context/MovieContext";
 import { useNavigate } from "react-router-dom";
 
 const AdminMovies = () => {
-  const { movies, setMovies } = useContext(MovieContext); // Usa el contexto
+  const { movies, setMovies } = useContext(MovieContext);
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
   const [editingMovie, setEditingMovie] = useState(null);
@@ -19,8 +19,6 @@ const AdminMovies = () => {
   });
   const [showNewMovieForm, setShowNewMovieForm] = useState(false);
 
-  //BUSCAR PELICULAS
-
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
   };
@@ -29,13 +27,9 @@ const AdminMovies = () => {
     movie.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // EDITAR PELICULA
-
   const handleEdit = (movie) => {
     setEditingMovie({ ...movie });
   };
-
-  //GUARDAR CAMBIOS
 
   const handleSaveEdit = () => {
     const updatedMovies = movies.map((movie) =>
@@ -45,14 +39,10 @@ const AdminMovies = () => {
     setEditingMovie(null);
   };
 
-  //ELIMINAR PELICULA
-
   const handleDelete = (id) => {
     const updatedMovies = movies.filter((movie) => movie.id !== id);
     setMovies(updatedMovies);
   };
-
-  //CAMBIAR DISPONIBILIDAD
 
   const handleToggleAvailability = (id) => {
     const updatedMovies = movies.map((movie) =>
@@ -60,8 +50,6 @@ const AdminMovies = () => {
     );
     setMovies(updatedMovies);
   };
-
-  //AGREGAR NUEVA PELICULA
 
   const handleAddMovie = () => {
     const newId = Date.now().toString();

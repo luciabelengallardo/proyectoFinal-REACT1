@@ -8,7 +8,7 @@ const users = [
   { email: "admin@admin.com", password: "123456", rol: "admin" },
 ];
 
-function RegisterScreen({ usuario, setUsuario }) {
+function RegisterScreen() {
   const navigate = useNavigate();
 
   const [formValues, setFormValues] = useState({
