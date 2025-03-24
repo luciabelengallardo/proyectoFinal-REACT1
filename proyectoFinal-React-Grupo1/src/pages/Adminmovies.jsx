@@ -113,9 +113,9 @@ const AdminMovies = () => {
           </div>
         </div>
 
-        <div className="">
-          <table className="bg-light">
-            <thead className="bg-secondary-subtle">
+        <div className="overflow-x-auto bg-white rounded-lg shadow-md">
+          <table className="min-w-full">
+            <thead className="bg-blue-500 text-dark">
               <tr>
                 <th className="p-4 text-left">Código</th>
                 <th className="p-4 text-left">Nombre</th>
@@ -127,7 +127,7 @@ const AdminMovies = () => {
             </thead>
             <tbody>
               {filteredMovies.map((movie) => (
-                <tr key={movie.id} className="border-t">
+                <tr key={movie.id} className="border-t hover:bg-gray-50">
                   {editingMovie && editingMovie.id === movie.id ? (
                     <>
                       <td className="p-4">{movie.id}</td>
@@ -141,7 +141,7 @@ const AdminMovies = () => {
                               title: e.target.value,
                             })
                           }
-                          className="border rounded p-1"
+                          className="border rounded-lg p-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                       </td>
                       <td className="p-4">
@@ -154,7 +154,7 @@ const AdminMovies = () => {
                               genre: e.target.value,
                             })
                           }
-                          className="border rounded p-1"
+                          className="border rounded-lg p-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                       </td>
                       <td className="p-4">
@@ -167,7 +167,7 @@ const AdminMovies = () => {
                               description: e.target.value,
                             })
                           }
-                          className="border rounded p-1"
+                          className="border rounded-lg p-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                       </td>
                       <td className="p-4">
@@ -180,10 +180,14 @@ const AdminMovies = () => {
                               disponible: e.target.checked,
                             })
                           }
+                          className="form-checkbox h-5 w-5 text-blue-500 rounded focus:ring-2 focus:ring-blue-500"
                         />
                       </td>
                       <td className="p-4">
-                        <button onClick={handleSaveEdit} className="">
+                        <button
+                          onClick={handleSaveEdit}
+                          className="bg-green-500 hover:bg-green-600 text-white font-bold py-1 px-3 rounded-lg shadow-md transition duration-300"
+                        >
                           💾 Guardar
                         </button>
                       </td>
@@ -203,24 +207,25 @@ const AdminMovies = () => {
                           type="checkbox"
                           checked={movie.disponible}
                           onChange={() => handleToggleAvailability(movie.id)}
+                          className="form-checkbox h-5 w-5 text-blue-500 rounded focus:ring-2 focus:ring-blue-500"
                         />
                       </td>
                       <td className="p-4 space-x-2">
                         <button
                           onClick={() => handleDelete(movie.id)}
-                          className="text-red-600 hover:text-red-800"
+                          className="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-3 rounded-lg shadow-md transition duration-300"
                         >
                           🗑️
                         </button>
                         <button
                           onClick={() => handleEdit(movie)}
-                          className="text-blue-600 hover:text-blue-800"
+                          className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-1 px-3 rounded-lg shadow-md transition duration-300"
                         >
                           ✏️
                         </button>
                         <button
                           onClick={() => handleToggleAvailability(movie.id)}
-                          className="text-yellow-600 hover:text-yellow-800"
+                          className="bg-purple-500 hover:bg-purple-600 text-white font-bold py-1 px-3 rounded-lg shadow-md transition duration-300"
                         >
                           ⭐
                         </button>
@@ -232,97 +237,111 @@ const AdminMovies = () => {
             </tbody>
           </table>
         </div>
-        {isModalOpen && (
-          <div
-            className="modal fade"
-            id="exampleModal"
-            tabindex="-1"
-            aria-labelledby="exampleModalLabel"
-            aria-hidden="true"
-          >
-            <div className="modal-dialog">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <button
-                    type="button"
-                    className="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  ></button>
-                </div>
 
-                <div className="modal-body">
-                  <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-                    <div className="bg-white p-6 rounded-lg w-96">
-                      <h2 className="text-xl font-bold mb-4">
-                        Agregar Nueva Película
-                      </h2>
-                      <div className="">
-                        <input
-                          type="text"
-                          placeholder="Título"
-                          className="my-2 p-2 border rounded"
-                          value={newMovie.title}
-                          onChange={(e) =>
-                            setNewMovie({ ...newMovie, title: e.target.value })
-                          }
-                        />
-                        <input
-                          type="text"
-                          placeholder="Descripción"
-                          className="my-2 mx-2 p-2 border rounded"
-                          value={newMovie.description}
-                          onChange={(e) =>
-                            setNewMovie({
-                              ...newMovie,
-                              description: e.target.value,
-                            })
-                          }
-                        />
-                        <input
-                          type="text"
-                          placeholder="Género"
-                          className="my-2 p-2 border rounded"
-                          value={newMovie.genre}
-                          onChange={(e) =>
-                            setNewMovie({ ...newMovie, genre: e.target.value })
-                          }
-                        />
-                        <input
-                          type="number"
-                          placeholder="Año"
-                          className="mx-2 p-2 border rounded"
-                          value={newMovie.year}
-                          onChange={(e) =>
-                            setNewMovie({ ...newMovie, year: e.target.value })
-                          }
-                        />
-                        <div className="my-3">
-                          <button
-                            onClick={handleAddMovie}
-                            className=" px-4 py-2 rounded"
-                          >
-                            💾 Guardar
-                          </button>
+        <div
+          className="modal fade"
+          id="exampleModal"
+          tabIndex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header bg-blue-500 text-white">
+                <h5 className="modal-title">Agregar Nueva Película</h5>
+                <button
+                  type="button"
+                  className="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div className="modal-body">
+                <div className="space-y-4">
+                  <input
+                    type="text"
+                    placeholder="Título"
+                    className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    value={newMovie.title}
+                    onChange={(ev) => {
+                      let value = ev.target.value;
 
-                          <button
-                            onClick={handleCancel}
-                            className="mx-2 px-4 py-2 rounded"
-                          >
-                            ❌ Cancelar
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                      if (value.length > 25) value = value.slice(0, 25);
+
+                      setNewMovie({ ...newMovie, title: value });
+                    }}
+                  />
+                  <input
+                    type="text"
+                    placeholder="Descripción"
+                    className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    value={newMovie.description}
+                    onChange={(ev) => {
+                      let value = ev.target.value;
+
+                      if (value.length > 200) value = value.slice(0, 200);
+
+                      setNewMovie({ ...newMovie, description: value });
+                    }}
+                  />
+                  <input
+                    type="text"
+                    placeholder="Género"
+                    className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    value={newMovie.genre}
+                    onChange={(ev) => {
+                      let value = ev.target.value;
+
+                      if (value.length > 20) value = value.slice(0, 20);
+
+                      setNewMovie({ ...newMovie, genre: value });
+                    }}
+                  />
+                  <input
+                    type="number"
+                    placeholder="Año"
+                    className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    onChange={(ev) => {
+                      let value = ev.target.value;
+
+                      if (value.length > 4) value = value.slice(0, 4);
+
+                      setNewMovie({ ...newMovie, year: value });
+                    }}
+                    value={newMovie.year}
+                  />
+                  <input
+                    type="text"
+                    placeholder="URL de la imagen"
+                    className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    value={newMovie.image}
+                    onChange={(e) =>
+                      setNewMovie({ ...newMovie, image: e.target.value })
+                    }
+                  />
                 </div>
+              </div>
+              <div className="modal-footer">
+                <button
+                  onClick={handleAddMovie}
+                  className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-300"
+                  data-bs-dismiss="modal"
+                >
+                  💾 Guardar
+                </button>
+                <button
+                  onClick={() => setShowNewMovieForm(false)}
+                  className="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-300"
+                  data-bs-dismiss="modal"
+                >
+                  ❌ Cancelar
+                </button>
               </div>
             </div>
           </div>
-        )}
+        </div>
       </div>
     </>
   );
 };
-
 export default AdminMovies;
