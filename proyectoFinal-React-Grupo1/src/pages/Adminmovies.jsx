@@ -52,16 +52,19 @@ const AdminMovies = () => {
     setMovies(updatedMovies);
   };
 
+  //CAMBIAR DISPONIBILIDAD
+
   const handleToggleAvailability = (id) => {
     const updatedMovies = movies.map((movie) =>
       movie.id === id ? { ...movie, disponible: !movie.disponible } : movie
     );
     setMovies(updatedMovies);
-    localStorage.setItem("movies", JSON.stringify(updatedMovies));
   };
 
+  //AGREGAR NUEVA PELICULA
+
   const handleAddMovie = () => {
-    const newId = Movienight.length + 1;
+    const newId = Date.now().toString();
     const movieToAdd = {
       ...newMovie,
       id: newId,
@@ -69,7 +72,6 @@ const AdminMovies = () => {
     };
     const updatedMovies = [...movies, movieToAdd];
     setMovies(updatedMovies);
-    localStorage.setItem("movies", JSON.stringify(updatedMovies));
     setNewMovie({
       title: "",
       description: "",
@@ -83,22 +85,6 @@ const AdminMovies = () => {
     setShowNewMovieForm(false);
     navigate("/admin");
   };
-  const handleCancel = () => {
-    setNewMovie({
-      title: "",
-      description: "",
-      disponible: true,
-      genre: "",
-      director: "",
-      year: "",
-      image: "",
-      trailer: "",
-    });
-    setShowNewMovieForm(false);
-    navigate("/admin");
-  };
-
-  console.log(filteredMovies);
 
   return (
     <>
