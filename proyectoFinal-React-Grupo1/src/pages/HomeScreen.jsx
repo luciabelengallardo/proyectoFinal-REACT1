@@ -1,14 +1,54 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Carousel from "../components/Carousel";
 import { Movienight } from "../data/Movienight";
 import { Link } from "react-router-dom";
 
 function HomeScreen() {
-  const array1 = Movienight.slice(0, 20);
-  const array2 = Movienight.slice(20, 40);
-  const array3 = Movienight.slice(40, 60);
-  const array4 = Movienight.slice(60, 80);
+  const [movies, setMovies] = useState([]);
+
+  const loadMovies = () => {
+    const storedMovies = localStorage.getItem("movies");
+    if (storedMovies) {
+      try {
+        const parsedMovies = JSON.parse(storedMovies);
+        if (Array.isArray(parsedMovies)) {
+          setMovies(parsedMovies);
+          console.log("Películas cargadas desde localStorage:", parsedMovies);
+        } else {
+          console.error("Los datos en localStorage no son válidos.");
+          setMovies(Movienight);
+        }
+      } catch (error) {
+        console.error("Error al parsear los datos de localStorage:", error);
+        setMovies(Movienight);
+      }
+    } else {
+      console.warn("No hay películas guardadas en localStorage.");
+      setMovies(Movienight);
+    }
+  };
+
+  useEffect(() => {
+    loadMovies();
+
+    const handleStorageChange = (event) => {
+      if (event.key === "movies") {
+        loadMovies();
+      }
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, []);
+
+  const array1 = movies.slice(0, 30);
+  const array2 = movies.slice(30, 60);
+  const array3 = movies.slice(60, 80);
+  const array4 = movies.slice(80, 100);
 
   return (
     <>
@@ -118,10 +158,16 @@ function HomeScreen() {
         </Link>
       </div>
 
-      <Carousel titulo={"Comedia"} items={array1} />
-      <Carousel titulo={"Accion"} items={array2} />
-      <Carousel titulo={"Drama"} items={array3} />
-      <Carousel titulo={"Series"} items={array4} />
+      {movies.length > 0 ? (
+        <>
+          <Carousel titulo={"Comedia"} items={array1} />
+          <Carousel titulo={"Accion"} items={array2} />
+          <Carousel titulo={"Drama"} items={array3} />
+          <Carousel titulo={"Lo mas reciente"} items={array4} />
+        </>
+      ) : (
+        <p className="text-center mt-4">No hay películas disponibles.</p>
+      )}
     </>
   );
 }
