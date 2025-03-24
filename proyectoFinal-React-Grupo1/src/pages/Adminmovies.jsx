@@ -92,7 +92,6 @@ const AdminMovies = () => {
         <div className="d-flex mx-2 my-3 justify-content-space-between">
           <div className="mb-6">
             <button
-              onClick={openModal}
               type="button"
               className="btn btn-warning"
               data-bs-toggle="modal"
@@ -188,7 +187,7 @@ const AdminMovies = () => {
                           onClick={handleSaveEdit}
                           className="bg-green-500 hover:bg-green-600 text-white font-bold py-1 px-3 rounded-lg shadow-md transition duration-300"
                         >
-                          💾 Guardar
+                          💾
                         </button>
                       </td>
                     </>
@@ -292,7 +291,7 @@ const AdminMovies = () => {
                     onChange={(ev) => {
                       let value = ev.target.value;
 
-                      if (value.length > 20) value = value.slice(0, 20);
+                      if (value.length > 30) value = value.slice(0, 30);
 
                       setNewMovie({ ...newMovie, genre: value });
                     }}
@@ -306,7 +305,11 @@ const AdminMovies = () => {
 
                       if (value.length > 4) value = value.slice(0, 4);
 
-                      setNewMovie({ ...newMovie, year: value });
+                      if (value <= 2025) {
+                        setNewMovie({ ...newMovie, year: value });
+                      } else {
+                        setNewMovie({ ...newMovie, year: "2025" });
+                      }
                     }}
                     value={newMovie.year}
                   />
@@ -324,17 +327,17 @@ const AdminMovies = () => {
               <div className="modal-footer">
                 <button
                   onClick={handleAddMovie}
-                  className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-300"
+                  className="bg-blue-500 hover:bg-blue-600 text-black font-bold py-2 px-4 rounded-lg shadow-md transition duration-300"
                   data-bs-dismiss="modal"
                 >
-                  💾 Guardar
+                  Guardar
                 </button>
                 <button
                   onClick={() => setShowNewMovieForm(false)}
-                  className="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-300"
+                  className="bg-gray-500 hover:bg-gray-600 text-black font-bold py-2 px-4 rounded-lg shadow-md transition duration-300"
                   data-bs-dismiss="modal"
                 >
-                  ❌ Cancelar
+                  Cancelar
                 </button>
               </div>
             </div>
