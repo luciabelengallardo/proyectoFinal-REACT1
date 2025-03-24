@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { Movienight } from "../data/Movienight";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import { MovieContext } from "../context/MovieContext";
+import { useNavigate } from "react-router-dom";
 
 const AdminMovies = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const [movies, setMovies] = useState([]);
+  const { movies, setMovies } = useContext(MovieContext); // Usa el contexto
+  const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
   const [editingMovie, setEditingMovie] = useState(null);
-  const navigate = useNavigate();
   const [newMovie, setNewMovie] = useState({
     title: "",
     description: "",
@@ -21,18 +19,7 @@ const AdminMovies = () => {
   });
   const [showNewMovieForm, setShowNewMovieForm] = useState(false);
 
-  useEffect(() => {
-    const storedMovies = localStorage.getItem("movies");
-    if (storedMovies) {
-      setMovies(Movienight);
-    } else {
-      setMovies(Movienight);
-      localStorage.setItem("movies", JSON.stringify(Movienight));
-    }
-  }, []);
-
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+  //BUSCAR PELICULAS
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
@@ -42,24 +29,27 @@ const AdminMovies = () => {
     movie.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  // EDITAR PELICULA
+
   const handleEdit = (movie) => {
     setEditingMovie({ ...movie });
   };
+
+  //GUARDAR CAMBIOS
 
   const handleSaveEdit = () => {
     const updatedMovies = movies.map((movie) =>
       movie.id === editingMovie.id ? editingMovie : movie
     );
     setMovies(updatedMovies);
-    localStorage.setItem("movies", JSON.stringify(updatedMovies));
     setEditingMovie(null);
-    navigate("/admin");
   };
+
+  //ELIMINAR PELICULA
 
   const handleDelete = (id) => {
     const updatedMovies = movies.filter((movie) => movie.id !== id);
     setMovies(updatedMovies);
-    localStorage.setItem("movies", JSON.stringify(updatedMovies));
   };
 
   const handleToggleAvailability = (id) => {
