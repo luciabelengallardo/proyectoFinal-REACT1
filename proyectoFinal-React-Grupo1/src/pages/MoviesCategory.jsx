@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Movienight } from "../data/Movienight";
 import "../css/moviescategory.css";
+import { MovieContext } from "../context/MovieContext";
 
 const MoviesCategory = () => {
   const [close, setClose] = useState(true);
-
+  const { movies } = useContext(MovieContext);
   const { id } = useParams();
-  const movie = Movienight.flat().find((movie) => movie.id === id);
-
+  const movie = movies.find((movie) => movie.id === id);
   if (!movie) {
     return <div>Movie not found</div>;
   }
